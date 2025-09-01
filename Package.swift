@@ -1,21 +1,22 @@
-// swift-tools-version:6.0
+// swift-tools-version:6.1
 
 import PackageDescription
 
 let package = Package(
     name: "OpenAPIClient",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v10_13),
-        .tvOS(.v12),
-        .watchOS(.v4),
+        .iOS(.v18),
+        .macOS(.v15),
+        .tvOS(.v18),
+        .watchOS(.v11),
+        .visionOS(.v2),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "OpenAPIClient",
             targets: ["OpenAPIClient"]
-        ),
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -27,7 +28,7 @@ let package = Package(
             name: "OpenAPIClient",
             dependencies: [],
             path: "Sources/OpenAPIClient"
-        ),
+        )
     ],
     swiftLanguageModes: [.v6]
 )
