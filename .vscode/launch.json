@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Rebrickable-swift}",
+            "name": "Debug Rebrickable-swift",
+            "program": "${workspaceFolder:Rebrickable-swift}/.build/debug/Rebrickable-swift",
+            "preLaunchTask": "swift: Build Debug Rebrickable-swift"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Rebrickable-swift}",
+            "name": "Release Rebrickable-swift",
+            "program": "${workspaceFolder:Rebrickable-swift}/.build/release/Rebrickable-swift",
+            "preLaunchTask": "swift: Build Release Rebrickable-swift"
+        }
+    ]
+}
