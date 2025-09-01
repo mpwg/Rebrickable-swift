@@ -2472,8 +2472,6 @@ components:
               type: array
               items:
                 type: string
-        print_of:
-          type: string
     partColor:
       required:
       - elements
