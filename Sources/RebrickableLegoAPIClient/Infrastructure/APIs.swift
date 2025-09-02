@@ -22,7 +22,7 @@ open class RebrickableLegoAPIClientAPIConfiguration: @unchecked Sendable {
     public var apiKey: String? {
         didSet {
             if let key = apiKey {
-                customHeaders["authorization"] = "key: \(key)"
+                customHeaders["authorization"] = "key \(key)"
             } else {
                 customHeaders.removeValue(forKey: "authorization")
             }
@@ -53,7 +53,7 @@ open class RebrickableLegoAPIClientAPIConfiguration: @unchecked Sendable {
         self.apiKey = apiKey
         if let key = apiKey {
             // override or set authorization header when apiKey provided
-            self.customHeaders["authorization"] = "key: \(key)"
+            self.customHeaders["authorization"] = "key \(key)"
         }
         self.requestBuilderFactory = requestBuilderFactory
         self.apiResponseQueue = apiResponseQueue

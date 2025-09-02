@@ -9,7 +9,7 @@ let package = Package(
         .macOS(.v14),
         .tvOS(.v17),
         .watchOS(.v10),
-        .visionOS(.v1)
+        .visionOS(.v1),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -28,7 +28,12 @@ let package = Package(
             name: "RebrickableLegoAPIClient",
             dependencies: [],
             path: "Sources/RebrickableLegoAPIClient"
-        )
+        ),
+        .testTarget(
+            name: "RebrickableLegoAPIClientTests",
+            dependencies: ["RebrickableLegoAPIClient"],
+            path: "Tests/RebrickableLegoAPIClientTests"
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
