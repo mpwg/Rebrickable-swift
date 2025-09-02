@@ -8,8 +8,9 @@ on:
 
 jobs:
   build:
-    name: Build (${{ matrix.os }})
+    name: Build and Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    environment: IntegrationTests
     strategy:
       matrix:
         os: [macos-latest]
@@ -38,3 +39,7 @@ jobs:
 
       - name: Build
         run: swift build --configuration debug
+      - name: Test
+        run: swift test --configuration debug
+        env:
+          REBRICKABLE_API_KEY: ${{ secrets.REBRICKABLE_API_KEY }}
