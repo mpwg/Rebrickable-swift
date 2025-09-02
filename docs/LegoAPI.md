@@ -1,6 +1,6 @@
 # LegoAPI
 
-All URIs are relative to *https://rebrickable.com*
+All URIs are relative to *<https://rebrickable.com>*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,8 +27,8 @@ Method | HTTP request | Description
 [**legoThemesList**](LegoAPI.md#legothemeslist) | **GET** /api/v3/lego/themes/ | Return all Themes
 [**legoThemesRead**](LegoAPI.md#legothemesread) | **GET** /api/v3/lego/themes/{id}/ | Return details for a specific Theme
 
-
 # **legoColorsList**
+
 ```swift
     open class func legoColorsList(page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: ColorsList?, _ error: Error?) -> Void)
 ```
@@ -38,6 +38,7 @@ Get a list of all Colors.
 Get a list of all Colors.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -63,9 +64,9 @@ LegoAPI.legoColorsList(page: page, pageSize: pageSize, ordering: ordering) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -77,12 +78,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoColorsRead**
+
 ```swift
     open class func legoColorsRead(id: String, ordering: String? = nil, completion: @escaping (_ data: Color?, _ error: Error?) -> Void)
 ```
@@ -92,6 +94,7 @@ Get details about a specific Color.
 Get details about a specific Color.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -116,8 +119,8 @@ LegoAPI.legoColorsRead(id: id, ordering: ordering) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | A unique value identifying this color. | 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **id** | **String** | A unique value identifying this color. |
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -129,12 +132,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoElementsRead**
+
 ```swift
     open class func legoElementsRead(elementId: String, completion: @escaping (_ data: Element?, _ error: Error?) -> Void)
 ```
@@ -144,6 +148,7 @@ Get details about a specific Element ID.
 Get details about a specific Element ID.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -167,7 +172,7 @@ LegoAPI.legoElementsRead(elementId: elementId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **elementId** | **String** |  | 
+ **elementId** | **String** |  |
 
 ### Return type
 
@@ -179,12 +184,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoMinifigsList**
+
 ```swift
     open class func legoMinifigsList(page: Int? = nil, pageSize: Int? = nil, minParts: Double? = nil, maxParts: Double? = nil, inSetNum: String? = nil, inThemeId: String? = nil, ordering: String? = nil, search: String? = nil, completion: @escaping (_ data: SetList?, _ error: Error?) -> Void)
 ```
@@ -194,6 +200,7 @@ Get a list of Minifigs.
 Get a list of Minifigs.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -224,14 +231,14 @@ LegoAPI.legoMinifigsList(page: page, pageSize: pageSize, minParts: minParts, max
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **minParts** | **Double** |  | [optional] 
- **maxParts** | **Double** |  | [optional] 
- **inSetNum** | **String** |  | [optional] 
- **inThemeId** | **String** |  | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
- **search** | **String** | A search term. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **minParts** | **Double** |  | [optional]
+ **maxParts** | **Double** |  | [optional]
+ **inSetNum** | **String** |  | [optional]
+ **inThemeId** | **String** |  | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
+ **search** | **String** | A search term. | [optional]
 
 ### Return type
 
@@ -243,12 +250,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoMinifigsPartsList**
+
 ```swift
     open class func legoMinifigsPartsList(setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil, completion: @escaping (_ data: SetPartsList?, _ error: Error?) -> Void)
 ```
@@ -258,6 +266,7 @@ Get a list of all Inventory Parts in this Minifig.
 Get a list of all Inventory Parts in this Minifig.  Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -284,10 +293,10 @@ LegoAPI.legoMinifigsPartsList(setNum: setNum, page: page, pageSize: pageSize, in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional]
 
 ### Return type
 
@@ -299,12 +308,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoMinifigsRead**
+
 ```swift
     open class func legoMinifigsRead(setNum: String, completion: @escaping (_ data: Set?, _ error: Error?) -> Void)
 ```
@@ -314,6 +324,7 @@ Get details for a specific Minifig.
 Get details for a specific Minifig.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -337,7 +348,7 @@ LegoAPI.legoMinifigsRead(setNum: setNum) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
+ **setNum** | **String** |  |
 
 ### Return type
 
@@ -349,12 +360,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoMinifigsSetsList**
+
 ```swift
     open class func legoMinifigsSetsList(setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: SetList?, _ error: Error?) -> Void)
 ```
@@ -364,6 +376,7 @@ Get a list of Sets a Minifig has appeared in.
 Get a list of Sets a Minifig has appeared in.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -390,10 +403,10 @@ LegoAPI.legoMinifigsSetsList(setNum: setNum, page: page, pageSize: pageSize, ord
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -405,12 +418,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartCategoriesList**
+
 ```swift
     open class func legoPartCategoriesList(page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: PartCategoriesList?, _ error: Error?) -> Void)
 ```
@@ -420,6 +434,7 @@ Get a list of all Part Categories.
 Get a list of all Part Categories.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -445,9 +460,9 @@ LegoAPI.legoPartCategoriesList(page: page, pageSize: pageSize, ordering: orderin
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -459,12 +474,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartCategoriesRead**
+
 ```swift
     open class func legoPartCategoriesRead(id: Int, ordering: String? = nil, completion: @escaping (_ data: PartCategory?, _ error: Error?) -> Void)
 ```
@@ -474,6 +490,7 @@ Get details about a specific Part Category.
 Get details about a specific Part Category.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -498,8 +515,8 @@ LegoAPI.legoPartCategoriesRead(id: id, ordering: ordering) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this part category. | 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **id** | **Int** | A unique integer value identifying this part category. |
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -511,12 +528,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartsColorsList**
+
 ```swift
     open class func legoPartsColorsList(partNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: PartColorsList?, _ error: Error?) -> Void)
 ```
@@ -526,6 +544,7 @@ Get a list of all Colors a Part has appeared in.
 Get a list of all Colors a Part has appeared in.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -552,10 +571,10 @@ LegoAPI.legoPartsColorsList(partNum: partNum, page: page, pageSize: pageSize, or
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **partNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **partNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -567,12 +586,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartsColorsRead**
+
 ```swift
     open class func legoPartsColorsRead(partNum: String, colorId: String, completion: @escaping (_ data: PartColor?, _ error: Error?) -> Void)
 ```
@@ -582,6 +602,7 @@ Get details about a specific Part/Color combination.
 Get details about a specific Part/Color combination.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -606,8 +627,8 @@ LegoAPI.legoPartsColorsRead(partNum: partNum, colorId: colorId) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **partNum** | **String** |  | 
- **colorId** | **String** |  | 
+ **partNum** | **String** |  |
+ **colorId** | **String** |  |
 
 ### Return type
 
@@ -619,12 +640,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartsColorsSetsList**
+
 ```swift
     open class func legoPartsColorsSetsList(partNum: String, colorId: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: SetList?, _ error: Error?) -> Void)
 ```
@@ -634,6 +656,7 @@ Get a list of all Sets the Part/Color combination has appeard in.
 Get a list of all Sets the Part/Color combination has appeared in.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -661,11 +684,11 @@ LegoAPI.legoPartsColorsSetsList(partNum: partNum, colorId: colorId, page: page, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **partNum** | **String** |  | 
- **colorId** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **partNum** | **String** |  |
+ **colorId** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -677,12 +700,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartsList**
+
 ```swift
     open class func legoPartsList(page: Int? = nil, pageSize: Int? = nil, partNum: String? = nil, partNums: String? = nil, partCatId: String? = nil, colorId: String? = nil, bricklinkId: String? = nil, brickowlId: String? = nil, legoId: String? = nil, ldrawId: String? = nil, ordering: String? = nil, search: String? = nil, incPartDetails: Bool? = nil, completion: @escaping (_ data: PartsList?, _ error: Error?) -> Void)
 ```
@@ -692,6 +716,7 @@ Get a list of Parts.
 Get a list of Parts.  Optional parameter inc_part_details=1 can be used to return additional fields, the same as for a single part lookup.  The optional part_nums filter parameter should be a comma separated list of part_num without spaces.  Optionally filter by one or more of the below query parameters.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -727,19 +752,19 @@ LegoAPI.legoPartsList(page: page, pageSize: pageSize, partNum: partNum, partNums
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **partNum** | **String** | Rebrickable part_num (part number) to lookup. | [optional] 
- **partNums** | **String** | Comma separated list of part_num. | [optional] 
- **partCatId** | **String** | Part category id | [optional] 
- **colorId** | **String** | Color id. | [optional] 
- **bricklinkId** | **String** | Bricklink specific id. | [optional] 
- **brickowlId** | **String** | Brickowl specific id. | [optional] 
- **legoId** | **String** |  | [optional] 
- **ldrawId** | **String** |  | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
- **search** | **String** | A search term. | [optional] 
- **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **partNum** | **String** | Rebrickable part_num (part number) to lookup. | [optional]
+ **partNums** | **String** | Comma separated list of part_num. | [optional]
+ **partCatId** | **String** | Part category id | [optional]
+ **colorId** | **String** | Color id. | [optional]
+ **bricklinkId** | **String** | Bricklink specific id. | [optional]
+ **brickowlId** | **String** | Brickowl specific id. | [optional]
+ **legoId** | **String** |  | [optional]
+ **ldrawId** | **String** |  | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
+ **search** | **String** | A search term. | [optional]
+ **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional]
 
 ### Return type
 
@@ -751,12 +776,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoPartsRead**
+
 ```swift
     open class func legoPartsRead(partNum: String, completion: @escaping (_ data: Part?, _ error: Error?) -> Void)
 ```
@@ -766,6 +792,7 @@ Get details about a specific Part.
 Get details about a specific Part.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -789,7 +816,7 @@ LegoAPI.legoPartsRead(partNum: partNum) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **partNum** | **String** |  | 
+ **partNum** | **String** |  |
 
 ### Return type
 
@@ -801,12 +828,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsAlternatesList**
+
 ```swift
     open class func legoSetsAlternatesList(setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: MocList?, _ error: Error?) -> Void)
 ```
@@ -816,6 +844,7 @@ Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts
 Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can be found in the Set.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -842,10 +871,10 @@ LegoAPI.legoSetsAlternatesList(setNum: setNum, page: page, pageSize: pageSize, o
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -857,12 +886,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsList**
+
 ```swift
     open class func legoSetsList(page: Int? = nil, pageSize: Int? = nil, themeId: String? = nil, minYear: Double? = nil, maxYear: Double? = nil, minParts: Double? = nil, maxParts: Double? = nil, ordering: String? = nil, search: String? = nil, completion: @escaping (_ data: SetList?, _ error: Error?) -> Void)
 ```
@@ -872,6 +902,7 @@ Get a list of Sets, optionally filtered by any of the below parameters.
 Get a list of Sets, optionally filtered by any of the below parameters.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -903,15 +934,15 @@ LegoAPI.legoSetsList(page: page, pageSize: pageSize, themeId: themeId, minYear: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **themeId** | **String** |  | [optional] 
- **minYear** | **Double** |  | [optional] 
- **maxYear** | **Double** |  | [optional] 
- **minParts** | **Double** |  | [optional] 
- **maxParts** | **Double** |  | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
- **search** | **String** | A search term. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **themeId** | **String** |  | [optional]
+ **minYear** | **Double** |  | [optional]
+ **maxYear** | **Double** |  | [optional]
+ **minParts** | **Double** |  | [optional]
+ **maxParts** | **Double** |  | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
+ **search** | **String** | A search term. | [optional]
 
 ### Return type
 
@@ -923,12 +954,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsMinifigsList**
+
 ```swift
     open class func legoSetsMinifigsList(setNum: String, page: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: SetMinifigsList?, _ error: Error?) -> Void)
 ```
@@ -938,6 +970,7 @@ Get a list of all Inventory Minifigs in this Set.
 Get a list of all Inventory Minifigs in this Set.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -963,9 +996,9 @@ LegoAPI.legoSetsMinifigsList(setNum: setNum, page: page, pageSize: pageSize) { (
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
 
 ### Return type
 
@@ -977,12 +1010,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsPartsList**
+
 ```swift
     open class func legoSetsPartsList(setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil, completion: @escaping (_ data: SetPartsList?, _ error: Error?) -> Void)
 ```
@@ -992,6 +1026,7 @@ Get a list of all Inventory Parts in this Set.
 Get a list of all Inventory Parts in this Set.  Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup. Optional parameter inc_minifig_parts=1 can be used to include minifig parts in this call. Optional parameter inc_color_details=0 can be used to prevent color field expansion and reduce response sizes.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -1018,10 +1053,10 @@ LegoAPI.legoSetsPartsList(setNum: setNum, page: page, pageSize: pageSize, incPar
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **incPartDetails** | **Bool** | Return additional part&#39;s fields. | [optional]
 
 ### Return type
 
@@ -1033,12 +1068,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsRead**
+
 ```swift
     open class func legoSetsRead(setNum: String, completion: @escaping (_ data: Set?, _ error: Error?) -> Void)
 ```
@@ -1048,6 +1084,7 @@ Get details for a specific Set.
 Get details for a specific Set.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -1071,7 +1108,7 @@ LegoAPI.legoSetsRead(setNum: setNum) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
+ **setNum** | **String** |  |
 
 ### Return type
 
@@ -1083,12 +1120,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoSetsSetsList**
+
 ```swift
     open class func legoSetsSetsList(setNum: String, page: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: SetList?, _ error: Error?) -> Void)
 ```
@@ -1098,6 +1136,7 @@ Get a list of all Inventory Sets in this Set.
 Get a list of all Inventory Sets in this Set.
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -1123,9 +1162,9 @@ LegoAPI.legoSetsSetsList(setNum: setNum, page: page, pageSize: pageSize) { (resp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **setNum** | **String** |  | 
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
+ **setNum** | **String** |  |
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
 
 ### Return type
 
@@ -1137,12 +1176,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoThemesList**
+
 ```swift
     open class func legoThemesList(page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil, completion: @escaping (_ data: ThemesList?, _ error: Error?) -> Void)
 ```
@@ -1152,6 +1192,7 @@ Return all Themes
 Return all Themes
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -1177,9 +1218,9 @@ LegoAPI.legoThemesList(page: page, pageSize: pageSize, ordering: ordering) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Int** | A page number within the paginated result set. | [optional] 
- **pageSize** | **Int** | Number of results to return per page. | [optional] 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **page** | **Int** | A page number within the paginated result set. | [optional]
+ **pageSize** | **Int** | Number of results to return per page. | [optional]
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -1191,12 +1232,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **legoThemesRead**
+
 ```swift
     open class func legoThemesRead(id: Int, ordering: String? = nil, completion: @escaping (_ data: Theme?, _ error: Error?) -> Void)
 ```
@@ -1206,6 +1248,7 @@ Return details for a specific Theme
 Return details for a specific Theme
 
 ### Example
+
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import RebrickableLegoAPIClient
@@ -1230,8 +1273,8 @@ LegoAPI.legoThemesRead(id: id, ordering: ordering) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this theme. | 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **id** | **Int** | A unique integer value identifying this theme. |
+ **ordering** | **String** | Which field to use when ordering the results. | [optional]
 
 ### Return type
 
@@ -1243,8 +1286,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
