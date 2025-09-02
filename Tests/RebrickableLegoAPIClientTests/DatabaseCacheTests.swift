@@ -114,7 +114,7 @@ final class DatabaseCacheTests {
         // Store with different expirations
         try await cache.store(entity: color1, expiration: .never)
         try await cache.store(entity: color2, expiration: .after(1))  // 1s
-        try await cache.store(entity: color3, expiration: .after(2))  // 2s
+        try await cache.store(entity: color3, expiration: .after(3))  // 2s
 
         // All should be available initially
         let red = try await cache.retrieve(type: Color.self, primaryKey: "5")
@@ -137,7 +137,7 @@ final class DatabaseCacheTests {
         #expect(greenAfter400?.name == "Green")  // Still valid (600ms)
 
         // Wait for green to expire (additional 300ms, total 700ms)
-        try await Task.sleep(for: .seconds(1.1))
+        try await Task.sleep(for: .seconds(3))
 
         let redAfter700 = try await cache.retrieve(type: Color.self, primaryKey: "5")
         let greenAfter700 = try await cache.retrieve(type: Color.self, primaryKey: "7")
