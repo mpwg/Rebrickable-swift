@@ -13,8 +13,8 @@ import Testing
     }
     let config = RebrickableLegoAPIClientAPIConfiguration(apiKey: apiKey)
 
-    let colorsList = try await LegoAPI.legoColorsList(
+    let colorsList: ColorsList = try await LegoAPI.legoColorsList(
         page: 1, pageSize: 10, apiConfiguration: config)
 
-    #expect(colorsList.count > 0)
+    #expect(colorsList.results?.count ?? 0 > 0)
 }
