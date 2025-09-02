@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main, auth]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+        swift: [6.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache SPM
+        uses: actions/cache@v4
+        with:
+          path: |-
+            .build
+            .swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}-${{ matrix.swift }}
+          restore-keys: |
+            ${{ runner.os }}-spm-${{ matrix.swift }}
+            ${{ runner.os }}-spm-
+
+      - name: Print Swift version
+        run: swift --version
+
+      - name: Resolve packages
+        run: swift package resolve
+
+      - name: Build
+        run: swift build --configuration debug
