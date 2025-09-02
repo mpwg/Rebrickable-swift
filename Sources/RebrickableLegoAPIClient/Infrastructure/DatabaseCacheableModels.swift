@@ -72,7 +72,10 @@ extension Theme: DatabaseCacheable {
 
 extension PartCategory: DatabaseCacheable {
     public var primaryKey: String {
-        return "\(id ?? -1)"
+        guard let id = id else {
+            fatalError("PartCategory must have a valid id to generate a cache key.")
+        }
+        return "\(id)"
     }
 
     public static var tableName: String {
