@@ -38,4 +38,3 @@ public struct SetList: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(results, forKey: .results)
     }
 }
-

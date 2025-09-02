@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.authors = 'OpenAPI Generator'
   s.license = 'Proprietary'
   s.homepage = 'https://github.com/OpenAPITools/openapi-generator'
-  s.summary = 'OpenAPIClient Swift SDK'
+  s.summary = 'RebrickableLegoAPIClient Swift SDK'
   s.source_files = 'Sources/OpenAPIClient/**/*.swift'
 end

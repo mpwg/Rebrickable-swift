@@ -40,7 +40,7 @@ Get a list of all Colors.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -94,7 +94,7 @@ Get details about a specific Color.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let id = "id_example" // String | A unique value identifying this color.
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -146,7 +146,7 @@ Get details about a specific Element ID.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let elementId = "elementId_example" // String | 
 
@@ -196,7 +196,7 @@ Get a list of Minifigs.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -260,7 +260,7 @@ Get a list of all Inventory Parts in this Minifig.  Optional parameter inc_part_
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -316,7 +316,7 @@ Get details for a specific Minifig.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 
@@ -366,7 +366,7 @@ Get a list of Sets a Minifig has appeared in.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -422,7 +422,7 @@ Get a list of all Part Categories.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -476,7 +476,7 @@ Get details about a specific Part Category.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let id = 987 // Int | A unique integer value identifying this part category.
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -528,7 +528,7 @@ Get a list of all Colors a Part has appeared in.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let partNum = "partNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -584,7 +584,7 @@ Get details about a specific Part/Color combination.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let partNum = "partNum_example" // String | 
 let colorId = "colorId_example" // String | 
@@ -636,7 +636,7 @@ Get a list of all Sets the Part/Color combination has appeared in.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let partNum = "partNum_example" // String | 
 let colorId = "colorId_example" // String | 
@@ -694,7 +694,7 @@ Get a list of Parts.  Optional parameter inc_part_details=1 can be used to retur
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -768,7 +768,7 @@ Get details about a specific Part.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let partNum = "partNum_example" // String | 
 
@@ -818,7 +818,7 @@ Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -874,7 +874,7 @@ Get a list of Sets, optionally filtered by any of the below parameters.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -940,7 +940,7 @@ Get a list of all Inventory Minifigs in this Set.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -994,7 +994,7 @@ Get a list of all Inventory Parts in this Set.  Optional parameter inc_part_deta
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -1050,7 +1050,7 @@ Get details for a specific Set.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 
@@ -1100,7 +1100,7 @@ Get a list of all Inventory Sets in this Set.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let setNum = "setNum_example" // String | 
 let page = 987 // Int | A page number within the paginated result set. (optional)
@@ -1154,7 +1154,7 @@ Return all Themes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let page = 987 // Int | A page number within the paginated result set. (optional)
 let pageSize = 987 // Int | Number of results to return per page. (optional)
@@ -1208,7 +1208,7 @@ Return details for a specific Theme
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import RebrickableLegoAPIClient
 
 let id = 987 // Int | A unique integer value identifying this theme.
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
