@@ -98,3 +98,43 @@ Authentication schemes defined for the API:
 
 ## Author
 Matthias Wallner-Géhri
+
+## Installation
+
+### Swift Package Manager
+
+Add the package to your application's `Package.swift` dependencies or use Xcode's "Add Package" UI.
+
+Package.swift example:
+
+```swift
+.package(url: "https://github.com/mpwg/Rebrickable-swift.git", from: "0.1.0"),
+```
+
+Then add the product to your target's dependencies:
+
+```swift
+.product(name: "RebrickableLegoAPIClient", package: "Rebrickable-swift"),
+```
+
+Xcode: File → Add Packages... → enter the repository URL `https://github.com/mpwg/Rebrickable-swift.git` and choose a version or branch.
+
+### Quick start
+
+Import the package and set your API key before making requests:
+
+```swift
+import RebrickableLegoAPIClient
+
+// Configure API key (the client will send header: "authorization: key <API_KEY>")
+RebrickableLegoAPIClientAPIConfiguration.shared.apiKey = "<your_api_key_here>"
+
+// Then call the generated APIs, for example:
+// let response = try await LegoAPI().legoColorsList()
+```
+
+Notes:
+
+- The package is built for Swift 6.x and the SPM product is `RebrickableLegoAPIClient`.
+
+- Tests in `Tests/RebrickableLegoAPIClientTests` use the `REBRICKABLE_API_KEY` environment variable when run from CI or the command line; if not set the network tests will be skipped.
