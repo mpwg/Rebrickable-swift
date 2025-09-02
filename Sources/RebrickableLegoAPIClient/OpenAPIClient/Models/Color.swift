@@ -8,13 +8,15 @@
 import Foundation
 
 public struct Color: Sendable, Codable, ParameterConvertible, Hashable {
-    public var externalIds: ColorExternalIds
-    public var id: Int
-    public var isTrans: Bool
-    public var name: String
-    public var rgb: String
+    public var externalIds: ColorExternalIds?
+    public var id: Int?
+    public var isTrans: Bool?
+    public var name: String?
+    public var rgb: String?
 
-    public init(externalIds: ColorExternalIds, id: Int, isTrans: Bool, name: String, rgb: String) {
+    public init(
+        externalIds: ColorExternalIds?, id: Int?, isTrans: Bool?, name: String?, rgb: String?
+    ) {
         self.externalIds = externalIds
         self.id = id
         self.isTrans = isTrans

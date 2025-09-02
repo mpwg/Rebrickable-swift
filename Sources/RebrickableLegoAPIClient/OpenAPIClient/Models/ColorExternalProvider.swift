@@ -8,10 +8,10 @@
 import Foundation
 
 public struct ColorExternalProvider: Sendable, Codable, ParameterConvertible, Hashable {
-    public var extDescrs: [[String]]
-    public var extIds: [Int]
+    public var extDescrs: [[String?]?]?
+    public var extIds: [Int]?
 
-    public init(extDescrs: [[String]], extIds: [Int]) {
+    public init(extDescrs: [[String?]?]?, extIds: [Int]?) {
         self.extDescrs = extDescrs
         self.extIds = extIds
     }
