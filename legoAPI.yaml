@@ -5,6 +5,8 @@ info:
   version: ""
 servers:
 - url: https://rebrickable.com/
+security:
+- ApiKeyAuth: []
 paths:
   /api/v3/lego/colors/:
     get:
@@ -2330,6 +2332,11 @@ paths:
           description: ""
           content: {}
 components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: authorization
   schemas:
     listBase:
       required:
