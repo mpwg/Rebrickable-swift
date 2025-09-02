@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Set**](Set.md)
+[**ModelSet**](ModelSet.md)
 
 ### Authorization
 
@@ -1075,7 +1075,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Set**](Set.md)
+[**ModelSet**](ModelSet.md)
 
 ### Authorization
 
