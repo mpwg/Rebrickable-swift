@@ -3,7 +3,8 @@
     "allow": [
       "Bash(swift build)",
       "Bash(swift test:*)",
-      "Bash(swift build:*)"
+      "Bash(swift build:*)",
+      "Bash(swift:*)"
     ],
     "deny": [],
     "ask": []
