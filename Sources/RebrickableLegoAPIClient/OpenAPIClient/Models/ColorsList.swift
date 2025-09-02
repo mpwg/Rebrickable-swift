@@ -13,8 +13,7 @@ public struct ColorsList: Sendable, Codable, ParameterConvertible, Hashable {
     public var previous: String?
     public var results: [Color?]?
 
-    public init(count: Int? = nil, next: String? = nil, previous: String? = nil, results: [Color?]?)
-    {
+    public init(count: Int? = nil, next: String? = nil, previous: String? = nil, results: [Color?]?) {
         self.count = count
         self.next = next
         self.previous = previous

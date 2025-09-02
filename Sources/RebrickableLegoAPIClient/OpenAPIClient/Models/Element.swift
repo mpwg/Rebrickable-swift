@@ -41,7 +41,7 @@ public struct Element: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(color, forKey: .color)
         try container.encode(elementId, forKey: .elementId)
         try container.encode(designId, forKey: .designId)
-    try container.encodeIfPresent(elementImgUrl, forKey: .elementImgUrl)
-    try container.encodeIfPresent(partImgUrl, forKey: .partImgUrl)
+        try container.encodeIfPresent(elementImgUrl, forKey: .elementImgUrl)
+        try container.encodeIfPresent(partImgUrl, forKey: .partImgUrl)
     }
 }

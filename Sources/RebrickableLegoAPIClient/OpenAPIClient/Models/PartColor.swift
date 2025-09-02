@@ -43,6 +43,7 @@ public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
         case partImgUrl = "part_img_url"
         case elements
     }
+
     // Custom decoding to accept numeric values represented as strings and to tolerate missing fields.
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -51,7 +52,7 @@ public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
         if let intVal = try? container.decodeIfPresent(Int.self, forKey: .colorId) {
             colorId = intVal
         } else if let strVal = try? container.decodeIfPresent(String.self, forKey: .colorId),
-            let intFromStr = Int(strVal)
+                  let intFromStr = Int(strVal)
         {
             colorId = intFromStr
         } else {

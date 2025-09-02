@@ -16,7 +16,7 @@ let package = Package(
         .library(
             name: "RebrickableLegoAPIClient",
             targets: ["RebrickableLegoAPIClient"]
-        )
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
