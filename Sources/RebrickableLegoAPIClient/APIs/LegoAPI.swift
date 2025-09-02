@@ -18,10 +18,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ColorsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoColorsList(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ColorsList {
         return try await legoColorsListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
@@ -43,7 +44,8 @@ open class LegoAPI {
      */
     open class func legoColorsListWithRequestBuilder(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<ColorsList> {
         let localVariablePath = "/api/v3/lego/colors/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -87,10 +89,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Color
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoColorsRead(
         id: String, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Color {
         return try await legoColorsReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
@@ -111,7 +114,8 @@ open class LegoAPI {
      */
     open class func legoColorsReadWithRequestBuilder(
         id: String, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<Color> {
         var localVariablePath = "/api/v3/lego/colors/{id}/"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -151,10 +155,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Element
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoElementsRead(
         elementId: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Element {
         return try await legoElementsReadWithRequestBuilder(
             elementId: elementId, apiConfiguration: apiConfiguration
@@ -174,7 +179,8 @@ open class LegoAPI {
      */
     open class func legoElementsReadWithRequestBuilder(
         elementId: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<Element> {
         var localVariablePath = "/api/v3/lego/elements/{element_id}/"
         let elementIdPreEscape = "\(APIHelper.mapValueToPathItem(elementId))"
@@ -215,12 +221,13 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoMinifigsList(
         page: Int? = nil, pageSize: Int? = nil, minParts: Double? = nil, maxParts: Double? = nil,
         inSetNum: String? = nil, inThemeId: String? = nil, ordering: String? = nil,
         search: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
         return try await legoMinifigsListWithRequestBuilder(
             page: page, pageSize: pageSize, minParts: minParts, maxParts: maxParts,
@@ -251,7 +258,8 @@ open class LegoAPI {
         page: Int? = nil, pageSize: Int? = nil, minParts: Double? = nil, maxParts: Double? = nil,
         inSetNum: String? = nil, inThemeId: String? = nil, ordering: String? = nil,
         search: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetList> {
         let localVariablePath = "/api/v3/lego/minifigs/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -317,10 +325,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetPartsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoMinifigsPartsList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetPartsList {
         return try await legoMinifigsPartsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, incPartDetails: incPartDetails,
@@ -344,7 +353,8 @@ open class LegoAPI {
      */
     open class func legoMinifigsPartsListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetPartsList> {
         var localVariablePath = "/api/v3/lego/minifigs/{set_num}/parts/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -392,10 +402,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Set
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoMinifigsRead(
         setNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ModelSet {
         return try await legoMinifigsReadWithRequestBuilder(
             setNum: setNum, apiConfiguration: apiConfiguration
@@ -415,7 +426,8 @@ open class LegoAPI {
      */
     open class func legoMinifigsReadWithRequestBuilder(
         setNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<ModelSet> {
         var localVariablePath = "/api/v3/lego/minifigs/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -452,10 +464,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoMinifigsSetsList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
         return try await legoMinifigsSetsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, ordering: ordering,
@@ -479,7 +492,8 @@ open class LegoAPI {
      */
     open class func legoMinifigsSetsListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetList> {
         var localVariablePath = "/api/v3/lego/minifigs/{set_num}/sets/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -529,10 +543,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PartCategoriesList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartCategoriesList(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartCategoriesList {
         return try await legoPartCategoriesListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
@@ -554,7 +569,8 @@ open class LegoAPI {
      */
     open class func legoPartCategoriesListWithRequestBuilder(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<PartCategoriesList> {
         let localVariablePath = "/api/v3/lego/part_categories/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -598,10 +614,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PartCategory
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartCategoriesRead(
         id: Int, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartCategory {
         return try await legoPartCategoriesReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
@@ -622,7 +639,8 @@ open class LegoAPI {
      */
     open class func legoPartCategoriesReadWithRequestBuilder(
         id: Int, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<PartCategory> {
         var localVariablePath = "/api/v3/lego/part_categories/{id}/"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -665,10 +683,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PartColorsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartsColorsList(
         partNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartColorsList {
         return try await legoPartsColorsListWithRequestBuilder(
             partNum: partNum, page: page, pageSize: pageSize, ordering: ordering,
@@ -692,7 +711,8 @@ open class LegoAPI {
      */
     open class func legoPartsColorsListWithRequestBuilder(
         partNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<PartColorsList> {
         var localVariablePath = "/api/v3/lego/parts/{part_num}/colors/"
         let partNumPreEscape = "\(APIHelper.mapValueToPathItem(partNum))"
@@ -741,10 +761,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PartColor
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartsColorsRead(
         partNum: String, colorId: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartColor {
         return try await legoPartsColorsReadWithRequestBuilder(
             partNum: partNum, colorId: colorId, apiConfiguration: apiConfiguration
@@ -765,7 +786,8 @@ open class LegoAPI {
      */
     open class func legoPartsColorsReadWithRequestBuilder(
         partNum: String, colorId: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<PartColor> {
         var localVariablePath = "/api/v3/lego/parts/{part_num}/colors/{color_id}/"
         let partNumPreEscape = "\(APIHelper.mapValueToPathItem(partNum))"
@@ -808,11 +830,12 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartsColorsSetsList(
         partNum: String, colorId: String, page: Int? = nil, pageSize: Int? = nil,
         ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
         return try await legoPartsColorsSetsListWithRequestBuilder(
             partNum: partNum, colorId: colorId, page: page, pageSize: pageSize, ordering: ordering,
@@ -838,7 +861,8 @@ open class LegoAPI {
     open class func legoPartsColorsSetsListWithRequestBuilder(
         partNum: String, colorId: String, page: Int? = nil, pageSize: Int? = nil,
         ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetList> {
         var localVariablePath = "/api/v3/lego/parts/{part_num}/colors/{color_id}/sets/"
         let partNumPreEscape = "\(APIHelper.mapValueToPathItem(partNum))"
@@ -903,13 +927,14 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PartsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartsList(
         page: Int? = nil, pageSize: Int? = nil, partNum: String? = nil, partNums: String? = nil,
         partCatId: String? = nil, colorId: String? = nil, bricklinkId: String? = nil,
         brickowlId: String? = nil, legoId: String? = nil, ldrawId: String? = nil,
         ordering: String? = nil, search: String? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartsList {
         return try await legoPartsListWithRequestBuilder(
             page: page, pageSize: pageSize, partNum: partNum, partNums: partNums,
@@ -947,7 +972,8 @@ open class LegoAPI {
         partCatId: String? = nil, colorId: String? = nil, bricklinkId: String? = nil,
         brickowlId: String? = nil, legoId: String? = nil, ldrawId: String? = nil,
         ordering: String? = nil, search: String? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<PartsList> {
         let localVariablePath = "/api/v3/lego/parts/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -1030,10 +1056,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Part
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoPartsRead(
         partNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Part {
         return try await legoPartsReadWithRequestBuilder(
             partNum: partNum, apiConfiguration: apiConfiguration
@@ -1053,7 +1080,8 @@ open class LegoAPI {
      */
     open class func legoPartsReadWithRequestBuilder(
         partNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<Part> {
         var localVariablePath = "/api/v3/lego/parts/{part_num}/"
         let partNumPreEscape = "\(APIHelper.mapValueToPathItem(partNum))"
@@ -1090,10 +1118,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: MocList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsAlternatesList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> MocList {
         return try await legoSetsAlternatesListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, ordering: ordering,
@@ -1117,7 +1146,8 @@ open class LegoAPI {
      */
     open class func legoSetsAlternatesListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<MocList> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/alternates/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -1173,12 +1203,13 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsList(
         page: Int? = nil, pageSize: Int? = nil, themeId: String? = nil, minYear: Double? = nil,
         maxYear: Double? = nil, minParts: Double? = nil, maxParts: Double? = nil,
         ordering: String? = nil, search: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
         return try await legoSetsListWithRequestBuilder(
             page: page, pageSize: pageSize, themeId: themeId, minYear: minYear, maxYear: maxYear,
@@ -1210,7 +1241,8 @@ open class LegoAPI {
         page: Int? = nil, pageSize: Int? = nil, themeId: String? = nil, minYear: Double? = nil,
         maxYear: Double? = nil, minParts: Double? = nil, maxParts: Double? = nil,
         ordering: String? = nil, search: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetList> {
         let localVariablePath = "/api/v3/lego/sets/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -1279,10 +1311,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetMinifigsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsMinifigsList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetMinifigsList {
         return try await legoSetsMinifigsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, apiConfiguration: apiConfiguration
@@ -1304,7 +1337,8 @@ open class LegoAPI {
      */
     open class func legoSetsMinifigsListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetMinifigsList> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/minifigs/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -1351,10 +1385,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetPartsList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsPartsList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetPartsList {
         return try await legoSetsPartsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, incPartDetails: incPartDetails,
@@ -1378,7 +1413,8 @@ open class LegoAPI {
      */
     open class func legoSetsPartsListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil, incPartDetails: Bool? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetPartsList> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/parts/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -1426,10 +1462,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Set
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsRead(
         setNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ModelSet {
         return try await legoSetsReadWithRequestBuilder(
             setNum: setNum, apiConfiguration: apiConfiguration
@@ -1449,7 +1486,8 @@ open class LegoAPI {
      */
     open class func legoSetsReadWithRequestBuilder(
         setNum: String,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<ModelSet> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -1485,10 +1523,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoSetsSetsList(
         setNum: String, page: Int? = nil, pageSize: Int? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
         return try await legoSetsSetsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, apiConfiguration: apiConfiguration
@@ -1510,7 +1549,8 @@ open class LegoAPI {
      */
     open class func legoSetsSetsListWithRequestBuilder(
         setNum: String, page: Int? = nil, pageSize: Int? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<SetList> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/sets/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
@@ -1556,10 +1596,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ThemesList
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoThemesList(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ThemesList {
         return try await legoThemesListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
@@ -1581,7 +1622,8 @@ open class LegoAPI {
      */
     open class func legoThemesListWithRequestBuilder(
         page: Int? = nil, pageSize: Int? = nil, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<ThemesList> {
         let localVariablePath = "/api/v3/lego/themes/"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
@@ -1625,10 +1667,11 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Theme
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+
     open class func legoThemesRead(
         id: Int, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Theme {
         return try await legoThemesReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
@@ -1649,7 +1692,8 @@ open class LegoAPI {
      */
     open class func legoThemesReadWithRequestBuilder(
         id: Int, ordering: String? = nil,
-        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
     ) -> RequestBuilder<Theme> {
         var localVariablePath = "/api/v3/lego/themes/{id}/"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
