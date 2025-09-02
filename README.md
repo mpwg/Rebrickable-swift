@@ -108,7 +108,7 @@ Add the package to your application's `Package.swift` dependencies or use Xcode'
 Package.swift example:
 
 ```swift
-.package(url: "https://github.com/mpwg/Rebrickable-swift.git", from: "0.1.0"),
+.package(url: "https://github.com/mpwg/Rebrickable-swift.git", from: "1.0.0"),
 ```
 
 Then add the product to your target's dependencies:
