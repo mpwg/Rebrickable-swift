@@ -122,7 +122,14 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+<a id="ApiKeyAuth"></a>
+### ApiKeyAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
 
 
 # How do I migrate from the Swift 5 generator to the swift 6 generator?

@@ -5,9 +5,8 @@
 //
 
 import Foundation
-
 #if canImport(FoundationNetworking)
-    import FoundationNetworking
+import FoundationNetworking
 #endif
 
 open class OpenAPIClientAPIConfiguration: @unchecked Sendable {
@@ -27,8 +26,7 @@ open class OpenAPIClientAPIConfiguration: @unchecked Sendable {
 
     public init(
         basePath: String = "https://rebrickable.com",
-        //customHeaders: [String: String] = [:],
-        apiKey: String = "",
+        customHeaders: [String: String] = [:],
         credential: URLCredential? = nil,
         requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory(),
         apiResponseQueue: DispatchQueue = .main,
@@ -37,7 +35,7 @@ open class OpenAPIClientAPIConfiguration: @unchecked Sendable {
         interceptor: OpenAPIInterceptor = DefaultOpenAPIInterceptor()
     ) {
         self.basePath = basePath
-        self.customHeaders = ["authentication": "key \(apiKey)"]
+        self.customHeaders = customHeaders
         self.credential = credential
         self.requestBuilderFactory = requestBuilderFactory
         self.apiResponseQueue = apiResponseQueue
@@ -62,11 +60,7 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
     /// Optional block to obtain a reference to the request's progress instance when available.
     public var onProgressReady: ((Progress) -> Void)?
 
-    required public init(
-        method: String, URLString: String, parameters: [String: any Sendable]?,
-        headers: [String: String] = [:], requiresAuthentication: Bool,
-        apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared
-    ) {
+    required public init(method: String, URLString: String, parameters: [String: any Sendable]?, headers: [String: String] = [:], requiresAuthentication: Bool, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) {
         self.method = method
         self.URLString = URLString
         self.parameters = parameters
@@ -85,9 +79,7 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
     }
 
     @discardableResult
-    open func execute(
-        completion: @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void
-    ) -> RequestTask {
+    open func execute(completion: @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
         return requestTask
     }
 
@@ -100,16 +92,16 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
                 try Task.checkCancellation()
                 return try await withCheckedThrowingContinuation { continuation in
                     guard !Task.isCancelled else {
-                        continuation.resume(throwing: CancellationError())
-                        return
+                      continuation.resume(throwing: CancellationError())
+                      return
                     }
 
                     self.execute { result in
                         switch result {
-                        case .success(let response):
+                        case let .success(response):
                             nonisolated(unsafe) let response = response
                             continuation.resume(returning: response)
-                        case .failure(let error):
+                        case let .failure(error):
                             continuation.resume(throwing: error)
                         }
                     }
@@ -125,7 +117,7 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
             }
         }
     }
-
+    
     public func addHeader(name: String, value: String) -> Self {
         if !value.isEmpty {
             headers[name] = value

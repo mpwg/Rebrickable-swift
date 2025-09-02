@@ -27,6 +27,9 @@ open class LegoAPI {
      Get a list of all Colors.
      - GET /api/v3/lego/colors/
      - Get a list of all Colors.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -53,7 +56,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ColorsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -73,6 +76,9 @@ open class LegoAPI {
      Get details about a specific Color.
      - GET /api/v3/lego/colors/{id}/
      - Get details about a specific Color.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter id: (path) A unique value identifying this color. 
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -99,7 +105,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Color>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -118,6 +124,9 @@ open class LegoAPI {
      Get details about a specific Element ID.
      - GET /api/v3/lego/elements/{element_id}/
      - Get details about a specific Element ID.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter elementId: (path)  
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Element> 
@@ -140,7 +149,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Element>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -166,6 +175,9 @@ open class LegoAPI {
      Get a list of Minifigs.
      - GET /api/v3/lego/minifigs/
      - Get a list of Minifigs.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter minParts: (query)  (optional)
@@ -202,7 +214,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -224,6 +236,9 @@ open class LegoAPI {
      Get a list of all Inventory Parts in this Minifig.
      - GET /api/v3/lego/minifigs/{set_num}/parts/
      - Get a list of all Inventory Parts in this Minifig.  Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -254,7 +269,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetPartsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -265,7 +280,7 @@ open class LegoAPI {
      - returns: Set
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func legoMinifigsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ModelSet {
+    open class func legoMinifigsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Set {
         return try await legoMinifigsReadWithRequestBuilder(setNum: setNum, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -273,11 +288,14 @@ open class LegoAPI {
      Get details for a specific Minifig.
      - GET /api/v3/lego/minifigs/{set_num}/
      - Get details for a specific Minifig.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<ModelSet> 
+     - returns: RequestBuilder<Set> 
      */
-    open class func legoMinifigsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ModelSet> {
+    open class func legoMinifigsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Set> {
         var localVariablePath = "/api/v3/lego/minifigs/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
         let setNumPostEscape = setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -293,9 +311,9 @@ open class LegoAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ModelSet>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Set>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -317,6 +335,9 @@ open class LegoAPI {
      Get a list of Sets a Minifig has appeared in.
      - GET /api/v3/lego/minifigs/{set_num}/sets/
      - Get a list of Sets a Minifig has appeared in.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -347,7 +368,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -368,6 +389,9 @@ open class LegoAPI {
      Get a list of all Part Categories.
      - GET /api/v3/lego/part_categories/
      - Get a list of all Part Categories.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -394,7 +418,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PartCategoriesList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -414,6 +438,9 @@ open class LegoAPI {
      Get details about a specific Part Category.
      - GET /api/v3/lego/part_categories/{id}/
      - Get details about a specific Part Category.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter id: (path) A unique integer value identifying this part category. 
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -440,7 +467,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PartCategory>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -462,6 +489,9 @@ open class LegoAPI {
      Get a list of all Colors a Part has appeared in.
      - GET /api/v3/lego/parts/{part_num}/colors/
      - Get a list of all Colors a Part has appeared in.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter partNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -492,7 +522,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PartColorsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -512,6 +542,9 @@ open class LegoAPI {
      Get details about a specific Part/Color combination.
      - GET /api/v3/lego/parts/{part_num}/colors/{color_id}/
      - Get details about a specific Part/Color combination.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter partNum: (path)  
      - parameter colorId: (path)  
      - parameter apiConfiguration: The configuration for the http request.
@@ -538,7 +571,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PartColor>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -561,6 +594,9 @@ open class LegoAPI {
      Get a list of all Sets the Part/Color combination has appeard in.
      - GET /api/v3/lego/parts/{part_num}/colors/{color_id}/sets/
      - Get a list of all Sets the Part/Color combination has appeared in.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter partNum: (path)  
      - parameter colorId: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
@@ -595,7 +631,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -626,6 +662,9 @@ open class LegoAPI {
      Get a list of Parts.
      - GET /api/v3/lego/parts/
      - Get a list of Parts.  Optional parameter inc_part_details=1 can be used to return additional fields, the same as for a single part lookup.  The optional part_nums filter parameter should be a comma separated list of part_num without spaces.  Optionally filter by one or more of the below query parameters.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter partNum: (query) Rebrickable part_num (part number) to lookup. (optional)
@@ -672,7 +711,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<PartsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -691,6 +730,9 @@ open class LegoAPI {
      Get details about a specific Part.
      - GET /api/v3/lego/parts/{part_num}/
      - Get details about a specific Part.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter partNum: (path)  
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Part> 
@@ -713,7 +755,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Part>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -735,6 +777,9 @@ open class LegoAPI {
      Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can
      - GET /api/v3/lego/sets/{set_num}/alternates/
      - Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can be found in the Set.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -765,7 +810,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<MocList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -792,6 +837,9 @@ open class LegoAPI {
      Get a list of Sets, optionally filtered by any of the below parameters.
      - GET /api/v3/lego/sets/
      - Get a list of Sets, optionally filtered by any of the below parameters.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter themeId: (query)  (optional)
@@ -830,7 +878,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -851,6 +899,9 @@ open class LegoAPI {
      Get a list of all Inventory Minifigs in this Set.
      - GET /api/v3/lego/sets/{set_num}/minifigs/
      - Get a list of all Inventory Minifigs in this Set.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -879,7 +930,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetMinifigsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -901,6 +952,9 @@ open class LegoAPI {
      Get a list of all Inventory Parts in this Set.
      - GET /api/v3/lego/sets/{set_num}/parts/
      - Get a list of all Inventory Parts in this Set.  Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup. Optional parameter inc_minifig_parts=1 can be used to include minifig parts in this call. Optional parameter inc_color_details=0 can be used to prevent color field expansion and reduce response sizes.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -931,7 +985,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetPartsList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -942,7 +996,7 @@ open class LegoAPI {
      - returns: Set
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func legoSetsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ModelSet {
+    open class func legoSetsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Set {
         return try await legoSetsReadWithRequestBuilder(setNum: setNum, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -950,11 +1004,14 @@ open class LegoAPI {
      Get details for a specific Set.
      - GET /api/v3/lego/sets/{set_num}/
      - Get details for a specific Set.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter apiConfiguration: The configuration for the http request.
-    - returns: RequestBuilder<ModelSet> 
+     - returns: RequestBuilder<Set> 
      */
-    open class func legoSetsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ModelSet> {
+    open class func legoSetsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Set> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
         let setNumPostEscape = setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -970,9 +1027,9 @@ open class LegoAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-    let localVariableRequestBuilder: RequestBuilder<ModelSet>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Set>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -993,6 +1050,9 @@ open class LegoAPI {
      Get a list of all Inventory Sets in this Set.
      - GET /api/v3/lego/sets/{set_num}/sets/
      - Get a list of all Inventory Sets in this Set.
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter setNum: (path)  
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -1021,7 +1081,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SetList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -1042,6 +1102,9 @@ open class LegoAPI {
      Return all Themes
      - GET /api/v3/lego/themes/
      - Return all Themes
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -1068,7 +1131,7 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<ThemesList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
@@ -1088,6 +1151,9 @@ open class LegoAPI {
      Return details for a specific Theme
      - GET /api/v3/lego/themes/{id}/
      - Return details for a specific Theme
+     - API Key:
+       - type: apiKey authorization (HEADER)
+       - name: ApiKeyAuth
      - parameter id: (path) A unique integer value identifying this theme. 
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -1114,6 +1180,6 @@ open class LegoAPI {
 
         let localVariableRequestBuilder: RequestBuilder<Theme>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 }
