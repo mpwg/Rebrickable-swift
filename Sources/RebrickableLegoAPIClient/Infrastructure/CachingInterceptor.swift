@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class CachingInterceptor: OpenAPIInterceptor {
+public class CachingInterceptor: OpenAPIInterceptor, @unchecked Sendable {
     private let apiCache: APICache
     private let configuration: CacheConfiguration
     
@@ -34,24 +34,9 @@ public class CachingInterceptor: OpenAPIInterceptor {
         error: Error,
         completion: @escaping (OpenAPIInterceptorRetry) -> Void
     ) {
-        // Check if we should serve from cache on network errors
-        if shouldServeFromCacheOnError(error: error) {
-            Task {
-                let cacheKey = createCacheKey(from: urlRequest)
-                
-                // Try to get from cache
-                if let httpResponse = response as? HTTPURLResponse,
-                   let cachedResponse = await getCachedResponse(for: cacheKey, httpResponse: httpResponse) {
-                    // We have cached data, but we need a way to inject it
-                    // For now, we'll let the network error propagate
-                    // In a real implementation, we'd need to modify the response
-                }
-                
-                completion(.dontRetry)
-            }
-        } else {
-            completion(.dontRetry)
-        }
+        // For now, we don't serve stale cache in the interceptor
+        // This would require more complex response injection
+        completion(.dontRetry)
     }
     
     private func shouldServeFromCacheOnError(error: Error) -> Bool {

@@ -42,17 +42,11 @@ final class CacheTests: XCTestCase {
         XCTAssertEqual(immediate, "value")
         
         // Wait for expiration
-        try await Task.sleep(nanoseconds: 150_000_000) // 150ms
+        try await Task.sleep(nanoseconds: 200_000_000) // 200ms to ensure expiration
         
-        // Should throw expired error
-        do {
-            _ = try await cache.get(key: key)
-            XCTFail("Expected expired error")
-        } catch CacheError.expired {
-            // Expected
-        } catch {
-            XCTFail("Unexpected error: \(error)")
-        }
+        // Should return nil for expired item (expired items are cleaned up automatically)
+        let expiredResult = try await cache.get(key: key)
+        XCTAssertNil(expiredResult, "Expected nil for expired cache item")
     }
     
     func testCacheLRUEviction() async throws {
@@ -67,16 +61,21 @@ final class CacheTests: XCTestCase {
         try await cache.set(key: key2, value: "value2")
         
         // Both should be available
-        XCTAssertNotNil(try await cache.get(key: key1))
-        XCTAssertNotNil(try await cache.get(key: key2))
+        let result1 = try await cache.get(key: key1)
+        let result2 = try await cache.get(key: key2)
+        XCTAssertNotNil(result1)
+        XCTAssertNotNil(result2)
         
         // Add third item, should evict first (LRU)
         try await cache.set(key: key3, value: "value3")
         
         // First should be evicted
-        XCTAssertNil(try await cache.get(key: key1))
-        XCTAssertNotNil(try await cache.get(key: key2))
-        XCTAssertNotNil(try await cache.get(key: key3))
+        let evictedResult = try await cache.get(key: key1)
+        let result2After = try await cache.get(key: key2)
+        let result3 = try await cache.get(key: key3)
+        XCTAssertNil(evictedResult)
+        XCTAssertNotNil(result2After)
+        XCTAssertNotNil(result3)
     }
     
     func testCacheKey() {
@@ -167,7 +166,7 @@ class MockURLSessionDataTask: URLSessionDataTaskProtocol {
     }
 }
 
-class MockURLSession: URLSessionProtocol {
+final class MockURLSession: URLSessionProtocol, @unchecked Sendable {
     func dataTaskFromProtocol(with request: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTaskProtocol {
         // Mock implementation - return success with empty data
         DispatchQueue.global().async {

@@ -5,7 +5,7 @@
 
 import Foundation
 
-open class CachedURLSessionDecodableRequestBuilder<T: Decodable & Sendable>: URLSessionDecodableRequestBuilder<T> {
+open class CachedURLSessionDecodableRequestBuilder<T: Decodable & Sendable>: URLSessionDecodableRequestBuilder<T>, @unchecked Sendable {
     private let cache: MemoryCache<APICacheKey, Response<T>>
     private let cacheConfiguration: CacheConfiguration
     
@@ -148,7 +148,7 @@ open class CachedURLSessionDecodableRequestBuilder<T: Decodable & Sendable>: URL
         config: EndpointCacheConfiguration
     ) async {
         do {
-            await cache.set(key: key, value: response, expiration: config.expiration)
+            try await cache.set(key: key, value: response, expiration: config.expiration)
         } catch {
             print("Failed to cache response: \(error)")
         }
@@ -159,30 +159,10 @@ open class CachedURLSessionDecodableRequestBuilder<T: Decodable & Sendable>: URL
         config: EndpointCacheConfiguration
     ) -> Bool {
         // Only use cache on network errors, not on HTTP errors like 404, 401, etc.
-        return config.shouldCacheOnError && error.errorCode < 0
-    }
-}
-
-// Factory to create cached request builders
-public class CachedRequestBuilderFactory: RequestBuilderFactory {
-    private let responseCache: MemoryCache<APICacheKey, Any>
-    private let cacheConfiguration: CacheConfiguration
-    
-    public init(cacheConfiguration: CacheConfiguration = .default) {
-        self.cacheConfiguration = cacheConfiguration
-        self.responseCache = MemoryCache<APICacheKey, Any>(
-            maxSize: cacheConfiguration.maxMemoryCacheSize
-        )
-    }
-    
-    public func getNonDecodableBuilder<T>() -> RequestBuilder<T>.Type {
-        // For non-decodable types, return the standard builder
-        URLSessionRequestBuilder<T>.self
-    }
-    
-    public func getBuilder<T: Decodable>() -> RequestBuilder<T>.Type {
-        // We can't directly return the generic type, so we need a different approach
-        // This will be handled by extending the API configuration
-        URLSessionDecodableRequestBuilder<T>.self
+        // ErrorResponse.error(statusCode, data, response, error) - negative status codes indicate network errors
+        if case .error(let statusCode, _, _, _) = error {
+            return config.shouldCacheOnError && statusCode < 0
+        }
+        return false
     }
 }

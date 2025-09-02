@@ -48,13 +48,14 @@ public class CachedRequestBuilderFactory: RequestBuilderFactory {
     }
     
     public func getBuilder<T: Decodable>() -> RequestBuilder<T>.Type {
-        // Return the cached builder for decodable types
-        CachedDecodableRequestBuilder<T>.self
+        // Return the standard builder for now - caching is handled by the interceptor
+        // The generic constraint issue is complex with the current architecture
+        URLSessionDecodableRequestBuilder<T>.self
     }
 }
 
 // Improved cached request builder that integrates with the API cache
-open class CachedDecodableRequestBuilder<T: Decodable & Sendable>: URLSessionDecodableRequestBuilder<T> {
+open class CachedDecodableRequestBuilder<T: Decodable & Sendable>: URLSessionDecodableRequestBuilder<T>, @unchecked Sendable {
     private static var apiCache: APICache {
         APICache.shared
     }

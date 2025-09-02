@@ -33,7 +33,7 @@ public class CacheUsageExamples {
         
         // Use the configuration for API calls
         let parts = try await LegoAPI.legoPartsList(apiConfiguration: cachedConfig)
-        print("Fetched \(parts.count ?? 0) parts")
+        print("Fetched \(parts.count) parts")
     }
     
     /// Example 3: Custom cache configuration
@@ -61,7 +61,7 @@ public class CacheUsageExamples {
         
         // Use the custom configuration
         let themes = try await LegoAPI.legoThemesList(apiConfiguration: apiConfig)
-        print("Fetched \(themes.count ?? 0) themes")
+        print("Fetched \(themes.count) themes")
     }
     
     // MARK: - Cache Management
@@ -87,12 +87,12 @@ public class CacheUsageExamples {
     /// Example 5: Cache with different expiration policies
     public static func expirationPolicyExample() async throws {
         // Cache that never expires
-        let neverExpireConfig = CacheConfiguration(
+        let _ = CacheConfiguration(
             defaultExpiration: .never
         )
         
         // Cache that expires at specific time
-        let specificTimeConfig = CacheConfiguration(
+        let _ = CacheConfiguration(
             defaultExpiration: .at(Date().addingTimeInterval(3600)) // Expires in 1 hour
         )
         
