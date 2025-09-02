@@ -3,13 +3,12 @@
 // Integration tests for caching functionality
 //
 
-import Testing
 import Foundation
+import Testing
 
 @testable import RebrickableLegoAPIClient
 
 final class CacheIntegrationTests {
-
     func testCacheConfigurationIntegration() {
         // Test that we can create cached configurations without errors
         let defaultConfig = RebrickableLegoAPIClientAPIConfiguration.withCaching()
@@ -66,10 +65,10 @@ final class CacheIntegrationTests {
 
         // Test basic cache operations
         let initialSize = await cache.cacheSize
-        let _ = await cache.isEmpty
+        _ = await cache.isEmpty
 
         // Cache should be empty initially (or at least respond to queries)
-        #expect(initialSize >= 0)  // Size should be non-negative
+        #expect(initialSize >= 0) // Size should be non-negative
 
         // Test clear operation
         await cache.clear()
@@ -105,16 +104,16 @@ final class CacheIntegrationTests {
         let colorsConfig = config.configurationFor(endpoint: "/api/v3/lego/colors/")
         #expect(colorsConfig.isEnabled)
 
-        if case .after(let timeInterval) = colorsConfig.expiration {
-            #expect(timeInterval == 3600)  // Colors should be cached for 1 hour
+        if case let .after(timeInterval) = colorsConfig.expiration {
+            #expect(timeInterval == 3600) // Colors should be cached for 1 hour
         } else {
             Issue.record("Expected .after expiration for colors endpoint")
         }
 
         // Test unknown endpoint gets default configuration
         let unknownConfig = config.configurationFor(endpoint: "/unknown/endpoint/")
-        if case .after(let timeInterval) = unknownConfig.expiration {
-            #expect(timeInterval == 600)  // Default 10 minutes
+        if case let .after(timeInterval) = unknownConfig.expiration {
+            #expect(timeInterval == 600) // Default 10 minutes
         } else {
             Issue.record("Expected .after expiration for unknown endpoint")
         }
@@ -146,7 +145,7 @@ final class CacheIntegrationTests {
 
         let afterDuration = CacheExpiration.after(300)
         #expect(afterDuration.expirationDate != nil)
-        #expect(afterDuration.isExpired() == false)  // Should not be expired immediately
+        #expect(afterDuration.isExpired() == false) // Should not be expired immediately
 
         let pastDate = Date().addingTimeInterval(-100)
         let expiredAt = CacheExpiration.at(pastDate)

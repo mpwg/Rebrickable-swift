@@ -10,7 +10,7 @@ public struct CacheConfiguration: Sendable {
     public let defaultExpiration: CacheExpiration
     public let maxMemoryCacheSize: Int
     public let endpointConfigurations: [String: EndpointCacheConfiguration]
-    
+
     public init(
         isEnabled: Bool = true,
         defaultExpiration: CacheExpiration = .after(300), // 5 minutes default
@@ -22,27 +22,27 @@ public struct CacheConfiguration: Sendable {
         self.maxMemoryCacheSize = maxMemoryCacheSize
         self.endpointConfigurations = endpointConfigurations
     }
-    
+
     public func configurationFor(endpoint: String) -> EndpointCacheConfiguration {
         endpointConfigurations[endpoint] ?? EndpointCacheConfiguration(
             isEnabled: isEnabled,
             expiration: defaultExpiration
         )
     }
-    
+
     // Predefined configurations for common use cases
     public static let `default` = CacheConfiguration()
-    
+
     public static let aggressive = CacheConfiguration(
         defaultExpiration: .after(1800), // 30 minutes
         maxMemoryCacheSize: 500
     )
-    
+
     public static let conservative = CacheConfiguration(
         defaultExpiration: .after(60), // 1 minute
         maxMemoryCacheSize: 50
     )
-    
+
     public static let disabled = CacheConfiguration(isEnabled: false)
 }
 
@@ -50,7 +50,7 @@ public struct EndpointCacheConfiguration: Sendable {
     public let isEnabled: Bool
     public let expiration: CacheExpiration
     public let shouldCacheOnError: Bool
-    
+
     public init(
         isEnabled: Bool = true,
         expiration: CacheExpiration = .after(300),
@@ -85,9 +85,9 @@ public extension CacheConfiguration {
             // Part categories are stable
             "/api/v3/lego/part_categories/": EndpointCacheConfiguration(
                 expiration: .after(3600) // 1 hour
-            )
+            ),
         ]
-        
+
         return CacheConfiguration(
             defaultExpiration: .after(600), // 10 minutes default
             maxMemoryCacheSize: 200,

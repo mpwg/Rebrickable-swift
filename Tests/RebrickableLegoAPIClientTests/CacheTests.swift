@@ -9,7 +9,6 @@ import Testing
 @testable import RebrickableLegoAPIClient
 
 final class CacheTests {
-
     func testMemoryCache() async throws {
         let cache = MemoryCache<APICacheKey, String>(maxSize: 3)
         let key1 = APICacheKey(endpoint: "/test1")
@@ -37,14 +36,14 @@ final class CacheTests {
         let key = APICacheKey(endpoint: "/test")
 
         // Set value with short expiration
-        try await cache.set(key: key, value: "value", expiration: .after(0.1))  // 100ms
+        try await cache.set(key: key, value: "value", expiration: .after(0.1)) // 100ms
 
         // Should be available immediately
         let immediate = try await cache.get(key: key)
         #expect(immediate == "value")
 
         // Wait for expiration
-        try await Task.sleep(nanoseconds: 200_000_000)  // 200ms to ensure expiration
+        try await Task.sleep(nanoseconds: 200_000_000) // 200ms to ensure expiration
 
         // Should return nil for expired item (expired items are cleaned up automatically)
         let expiredResult = try await cache.get(key: key)
@@ -82,9 +81,11 @@ final class CacheTests {
 
     func testCacheKey() {
         let key1 = APICacheKey(
-            endpoint: "/test", parameters: ["param1": "value1", "param2": "value2"])
+            endpoint: "/test", parameters: ["param1": "value1", "param2": "value2"]
+        )
         let key2 = APICacheKey(
-            endpoint: "/test", parameters: ["param2": "value2", "param1": "value1"])
+            endpoint: "/test", parameters: ["param2": "value2", "param1": "value1"]
+        )
 
         // Keys with same endpoint and parameters (in different order) should be equal
         #expect(key1 == key2)
@@ -105,16 +106,16 @@ final class CacheTests {
         let colorsConfig = config.configurationFor(endpoint: "/api/v3/lego/colors/")
         #expect(colorsConfig.isEnabled == true)
 
-        if case .after(let timeInterval) = colorsConfig.expiration {
-            #expect(timeInterval == 3600)  // 1 hour for colors
+        if case let .after(timeInterval) = colorsConfig.expiration {
+            #expect(timeInterval == 3600) // 1 hour for colors
         } else {
             Issue.record("Expected .after expiration")
         }
 
         // Test unknown endpoint uses default
         let unknownConfig = config.configurationFor(endpoint: "/unknown/endpoint/")
-        if case .after(let timeInterval) = unknownConfig.expiration {
-            #expect(timeInterval == 600)  // 10 minutes default
+        if case let .after(timeInterval) = unknownConfig.expiration {
+            #expect(timeInterval == 600) // 10 minutes default
         } else {
             Issue.record("Expected .after expiration")
         }
@@ -159,7 +160,7 @@ final class CacheTests {
 // Mock classes for testing
 class MockURLSessionDataTask: URLSessionDataTaskProtocol {
     var taskIdentifier: Int = 1
-    var progress: Progress = Progress()
+    var progress: Progress = .init()
 
     func resume() {
         // Mock implementation
