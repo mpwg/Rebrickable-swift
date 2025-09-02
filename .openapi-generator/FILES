@@ -1,7 +1,8 @@
 .gitignore
+.openapi-generator-ignore
 .swiftformat
 Cartfile
-OpenAPIClient.podspec
+RebrickableLegoAPIClient.podspec
 Package.swift
 README.md
 Sources/OpenAPIClient/APIs/LegoAPI.swift

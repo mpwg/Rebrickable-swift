@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "OpenAPIClient",
+    name: "RebrickableLegoAPIClient",
     platforms: [
-        .iOS(.v18),
-        .macOS(.v15),
-        .tvOS(.v18),
-        .watchOS(.v11),
-        .visionOS(.v2),
+        .iOS(.v17),
+        .macOS(.v14),
+        .tvOS(.v17),
+        .watchOS(.v10),
+        .visionOS(.v1)
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "legoAPIClient",
-            targets: ["legoAPIClient"]
+            name: "RebrickableLegoAPIClient",
+            targets: ["RebrickableLegoAPIClient"]
         )
     ],
     dependencies: [
@@ -25,9 +25,9 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "legoAPIClient",
+            name: "RebrickableLegoAPIClient",
             dependencies: [],
-            path: "Sources/legoAPIClient"
+            path: "Sources/RebrickableLegoAPIClient"
         )
     ],
     swiftLanguageModes: [.v6]
