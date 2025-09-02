@@ -11,9 +11,9 @@ public struct MocList: Sendable, Codable, ParameterConvertible, Hashable {
     public var count: Int
     public var next: String?
     public var previous: String?
-    public var results: [Moc]
+    public var results: [Moc?]?
 
-    public init(count: Int, next: String? = nil, previous: String? = nil, results: [Moc]) {
+    public init(count: Int, next: String? = nil, previous: String? = nil, results: [Moc?]?) {
         self.count = count
         self.next = next
         self.previous = previous

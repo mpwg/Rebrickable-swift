@@ -25,8 +25,8 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
     guard let config = apiKeyOrSkip() else { return }
     // example element id used by Rebrickable API; adjust if necessary
     let element: Element = try await LegoAPI.legoElementsRead(
-        elementId: "3001cpb01", apiConfiguration: config)
-    #expect(!element.elementId.isEmpty)
+        elementId: "4190230", apiConfiguration: config)
+    #expect(!element.elementId!.isEmpty)
 }
 
 @Test func CalllegoMinifigsList() async throws {
@@ -40,7 +40,7 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
     guard let config = apiKeyOrSkip() else { return }
     let colorsList: ColorsList = try await LegoAPI.legoColorsList(
         page: 1, pageSize: 10, apiConfiguration: config)
-    #expect(colorsList.results?.count ?? 0 > 0)
+    #expect(colorsList.results!.count > 0)
 }
 
 @Test func CalllegoMinifigsPartsList() async throws {
@@ -53,14 +53,14 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
 @Test func CalllegoMinifigsRead() async throws {
     guard let config = apiKeyOrSkip() else { return }
     let set: ModelSet = try await LegoAPI.legoMinifigsRead(
-        setNum: "minifig-1", apiConfiguration: config)
-    #expect(!set.setNum.isEmpty)
+        setNum: "fig-002476", apiConfiguration: config)
+    #expect(!set.setNum!.isEmpty)
 }
 
 @Test func CalllegoMinifigsSetsList() async throws {
     guard let config = apiKeyOrSkip() else { return }
     let sets: SetList = try await LegoAPI.legoMinifigsSetsList(
-        setNum: "minifig-1", page: 1, pageSize: 5, apiConfiguration: config)
+        setNum: "fig-002476", page: 1, pageSize: 5, apiConfiguration: config)
     #expect(sets.results.count >= 0)
 }
 
@@ -68,14 +68,14 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
     guard let config = apiKeyOrSkip() else { return }
     let list: PartCategoriesList = try await LegoAPI.legoPartCategoriesList(
         page: 1, pageSize: 5, apiConfiguration: config)
-    #expect(list.results.count >= 0)
+    #expect(list.results!.count >= 0)
 }
 
 @Test func CalllegoPartCategoriesRead() async throws {
     guard let config = apiKeyOrSkip() else { return }
     let cat: PartCategory = try await LegoAPI.legoPartCategoriesRead(
         id: 1, apiConfiguration: config)
-    #expect(cat.id > 0)
+    #expect(cat.id ?? 0 > 0)
 }
 
 @Test func CalllegoPartsColorsList() async throws {
@@ -109,14 +109,14 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
 @Test func CalllegoPartsRead() async throws {
     guard let config = apiKeyOrSkip() else { return }
     let part: Part = try await LegoAPI.legoPartsRead(partNum: "3001", apiConfiguration: config)
-    #expect(!part.partNum.isEmpty)
+    #expect(!part.partNum!.isEmpty)
 }
 
 @Test func CalllegoSetsAlternatesList() async throws {
     guard let config = apiKeyOrSkip() else { return }
     let list: MocList = try await LegoAPI.legoSetsAlternatesList(
         setNum: "0000-1", page: 1, pageSize: 5, apiConfiguration: config)
-    #expect(list.results.count >= 0)
+    #expect(list.results!.count >= 0)
 }
 
 @Test func CalllegoSetsList() async throws {
@@ -142,8 +142,9 @@ private func apiKeyOrSkip() -> RebrickableLegoAPIClientAPIConfiguration? {
 
 @Test func CalllegoSetsRead() async throws {
     guard let config = apiKeyOrSkip() else { return }
-    let set: ModelSet = try await LegoAPI.legoSetsRead(setNum: "0000-1", apiConfiguration: config)
-    #expect(!set.setNum.isEmpty)
+    let set: ModelSet = try await LegoAPI.legoSetsRead(setNum: "21036-1", apiConfiguration: config)
+    #expect(!set.setNum!.isEmpty)
+
 }
 
 @Test func CalllegoSetsSetsList() async throws {

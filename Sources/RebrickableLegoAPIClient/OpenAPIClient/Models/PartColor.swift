@@ -8,16 +8,21 @@
 import Foundation
 
 public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
-    public var colorId: Int
+    // Some API responses may omit or provide numeric ids as strings. Make these optional and decode flexibly.
+    public var colorId: Int?
     public var colorName: String
     public var yearFrom: Int?
     public var yearTo: Int?
-    public var numSets: Int
-    public var numSetParts: Int
-    public var partImgUrl: String
-    public var elements: [String]
+    public var numSets: Int?
+    public var numSetParts: Int?
+    public var partImgUrl: String?
+    public var elements: [String]?
 
-    public init(colorId: Int, colorName: String, yearFrom: Int? = nil, yearTo: Int? = nil, numSets: Int, numSetParts: Int, partImgUrl: String, elements: [String]) {
+    public init(
+        colorId: Int? = nil, colorName: String, yearFrom: Int? = nil, yearTo: Int? = nil,
+        numSets: Int? = nil, numSetParts: Int? = nil, partImgUrl: String? = nil,
+        elements: [String]? = nil
+    ) {
         self.colorId = colorId
         self.colorName = colorName
         self.yearFrom = yearFrom
@@ -38,18 +43,44 @@ public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
         case partImgUrl = "part_img_url"
         case elements
     }
+    // Custom decoding to accept numeric values represented as strings and to tolerate missing fields.
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        // color_id might be Int or String or missing
+        if let intVal = try? container.decodeIfPresent(Int.self, forKey: .colorId) {
+            colorId = intVal
+        } else if let strVal = try? container.decodeIfPresent(String.self, forKey: .colorId),
+            let intFromStr = Int(strVal)
+        {
+            colorId = intFromStr
+        } else {
+            colorId = nil
+        }
+
+        // required field in docs, but be defensive; ensure non-empty to satisfy callers
+        colorName = (try? container.decodeIfPresent(String.self, forKey: .colorName)) ?? "unknown"
+
+        yearFrom = try? container.decodeIfPresent(Int.self, forKey: .yearFrom)
+        yearTo = try? container.decodeIfPresent(Int.self, forKey: .yearTo)
+
+        numSets = try? container.decodeIfPresent(Int.self, forKey: .numSets)
+        numSetParts = try? container.decodeIfPresent(Int.self, forKey: .numSetParts)
+
+        partImgUrl = try? container.decodeIfPresent(String.self, forKey: .partImgUrl)
+        elements = try? container.decodeIfPresent([String].self, forKey: .elements)
+    }
 
     // Encodable protocol methods
-
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(colorId, forKey: .colorId)
+        try container.encodeIfPresent(colorId, forKey: .colorId)
         try container.encode(colorName, forKey: .colorName)
         try container.encodeIfPresent(yearFrom, forKey: .yearFrom)
         try container.encodeIfPresent(yearTo, forKey: .yearTo)
-        try container.encode(numSets, forKey: .numSets)
-        try container.encode(numSetParts, forKey: .numSetParts)
-        try container.encode(partImgUrl, forKey: .partImgUrl)
-        try container.encode(elements, forKey: .elements)
+        try container.encodeIfPresent(numSets, forKey: .numSets)
+        try container.encodeIfPresent(numSetParts, forKey: .numSetParts)
+        try container.encodeIfPresent(partImgUrl, forKey: .partImgUrl)
+        try container.encodeIfPresent(elements, forKey: .elements)
     }
 }

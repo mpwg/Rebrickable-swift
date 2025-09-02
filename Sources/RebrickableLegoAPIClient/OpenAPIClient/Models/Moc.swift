@@ -8,17 +8,21 @@
 import Foundation
 
 public struct Moc: Sendable, Codable, ParameterConvertible, Hashable {
-    public var setNum: String
-    public var name: String
+    public var setNum: String?
+    public var name: String?
     public var year: Int?
     public var themeId: Int?
-    public var numParts: Int
-    public var mocImgUrl: String
-    public var mocUrl: String
-    public var designerName: String
-    public var designerUrl: String
+    public var numParts: Int?
+    public var mocImgUrl: String?
+    public var mocUrl: String?
+    public var designerName: String?
+    public var designerUrl: String?
 
-    public init(setNum: String, name: String, year: Int? = nil, themeId: Int? = nil, numParts: Int, mocImgUrl: String, mocUrl: String, designerName: String, designerUrl: String) {
+    public init(
+        setNum: String? = nil, name: String? = nil, year: Int? = nil, themeId: Int? = nil,
+        numParts: Int? = nil, mocImgUrl: String? = nil, mocUrl: String? = nil,
+        designerName: String? = nil, designerUrl: String? = nil
+    ) {
         self.setNum = setNum
         self.name = name
         self.year = year
