@@ -5,6 +5,7 @@
 //
 
 import Foundation
+
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
@@ -16,6 +17,17 @@ open class RebrickableLegoAPIClientAPIConfiguration: @unchecked Sendable {
     public var requestBuilderFactory: RequestBuilderFactory
     public var apiResponseQueue: DispatchQueue
     public var codableHelper: CodableHelper
+    /// Optional API key for ApiKeyAuth (header: "authorization").
+    /// Setting this will automatically add/remove the "authorization" entry in `customHeaders`.
+    public var apiKey: String? {
+        didSet {
+            if let key = apiKey {
+                customHeaders["authorization"] = "key: \(key)"
+            } else {
+                customHeaders.removeValue(forKey: "authorization")
+            }
+        }
+    }
 
     /// Configures the range of HTTP status codes that will result in a successful response
     ///
@@ -28,15 +40,21 @@ open class RebrickableLegoAPIClientAPIConfiguration: @unchecked Sendable {
         basePath: String = "https://rebrickable.com",
         customHeaders: [String: String] = [:],
         credential: URLCredential? = nil,
+        apiKey: String? = nil,
         requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory(),
         apiResponseQueue: DispatchQueue = .main,
         codableHelper: CodableHelper = CodableHelper(),
-        successfulStatusCodeRange: Range<Int> = 200 ..< 300,
+        successfulStatusCodeRange: Range<Int> = 200..<300,
         interceptor: OpenAPIInterceptor = DefaultOpenAPIInterceptor()
     ) {
         self.basePath = basePath
         self.customHeaders = customHeaders
         self.credential = credential
+        self.apiKey = apiKey
+        if let key = apiKey {
+            // override or set authorization header when apiKey provided
+            self.customHeaders["authorization"] = "key: \(key)"
+        }
         self.requestBuilderFactory = requestBuilderFactory
         self.apiResponseQueue = apiResponseQueue
         self.codableHelper = codableHelper
@@ -60,7 +78,12 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
     /// Optional block to obtain a reference to the request's progress instance when available.
     public var onProgressReady: ((Progress) -> Void)?
 
-    public required init(method: String, URLString: String, parameters: [String: any Sendable]?, headers: [String: String] = [:], requiresAuthentication: Bool, apiConfiguration: RebrickableLegoAPIClientAPIConfiguration = RebrickableLegoAPIClientAPIConfiguration.shared) {
+    public required init(
+        method: String, URLString: String, parameters: [String: any Sendable]?,
+        headers: [String: String] = [:], requiresAuthentication: Bool,
+        apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
+            RebrickableLegoAPIClientAPIConfiguration.shared
+    ) {
         self.method = method
         self.URLString = URLString
         self.parameters = parameters
@@ -79,7 +102,10 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
     }
 
     @discardableResult
-    open func execute(completion _: @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
+    open func execute(
+        completion _:
+            @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void
+    ) -> RequestTask {
         requestTask
     }
 
@@ -98,10 +124,10 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
 
                     self.execute { result in
                         switch result {
-                        case let .success(response):
+                        case .success(let response):
                             nonisolated(unsafe) let response = response
                             continuation.resume(returning: response)
-                        case let .failure(error):
+                        case .failure(let error):
                             continuation.resume(throwing: error)
                         }
                     }
