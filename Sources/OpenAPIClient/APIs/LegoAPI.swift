@@ -280,7 +280,7 @@ open class LegoAPI {
      - returns: Set
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func legoMinifigsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Set {
+    open class func legoMinifigsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ModelSet {
         return try await legoMinifigsReadWithRequestBuilder(setNum: setNum, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -295,7 +295,7 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Set> 
      */
-    open class func legoMinifigsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Set> {
+    open class func legoMinifigsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ModelSet> {
         var localVariablePath = "/api/v3/lego/minifigs/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
         let setNumPostEscape = setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -311,7 +311,7 @@ open class LegoAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Set>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+    let localVariableRequestBuilder: RequestBuilder<ModelSet>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -996,7 +996,7 @@ open class LegoAPI {
      - returns: Set
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func legoSetsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Set {
+    open class func legoSetsRead(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ModelSet {
         return try await legoSetsReadWithRequestBuilder(setNum: setNum, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -1011,7 +1011,7 @@ open class LegoAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Set> 
      */
-    open class func legoSetsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Set> {
+    open class func legoSetsReadWithRequestBuilder(setNum: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ModelSet> {
         var localVariablePath = "/api/v3/lego/sets/{set_num}/"
         let setNumPreEscape = "\(APIHelper.mapValueToPathItem(setNum))"
         let setNumPostEscape = setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1027,7 +1027,7 @@ open class LegoAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Set>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+    let localVariableRequestBuilder: RequestBuilder<ModelSet>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
