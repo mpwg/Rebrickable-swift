@@ -6,7 +6,7 @@
 
 import Foundation
 
-public struct APIHelper {
+public enum APIHelper {
     public static func rejectNil(_ source: [String: (any Sendable)?]) -> [String: any Sendable]? {
         let destination = source.reduce(into: [String: any Sendable]()) { result, item in
             if let value = item.value {
@@ -21,7 +21,7 @@ public struct APIHelper {
     }
 
     public static func rejectNilHeaders(_ source: [String: (any Sendable)?]) -> [String: String] {
-        return source.reduce(into: [String: String]()) { result, item in
+        source.reduce(into: [String: String]()) { result, item in
             if let collection = item.value as? [Any?] {
                 result[item.key] = collection
                     .compactMap { value in convertAnyToString(value) }
@@ -73,16 +73,14 @@ public struct APIHelper {
     public static func mapValuesToQueryItems(_ source: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)]) -> [URLQueryItem]? {
         let destination = source.filter { $0.value.wrappedValue != nil }.reduce(into: [URLQueryItem]()) { result, item in
             if let collection = item.value.wrappedValue as? [Any?] {
-
                 let collectionValues: [String] = collection.compactMap { value in convertAnyToString(value) }
 
                 if !item.value.isExplode {
                     result.append(URLQueryItem(name: item.key, value: collectionValues.joined(separator: ",")))
                 } else {
-                    collectionValues
-                        .forEach { value in
-                            result.append(URLQueryItem(name: item.key, value: value))
-                        }
+                    for value in collectionValues {
+                        result.append(URLQueryItem(name: item.key, value: value))
+                    }
                 }
 
             } else if let value = item.value.wrappedValue {

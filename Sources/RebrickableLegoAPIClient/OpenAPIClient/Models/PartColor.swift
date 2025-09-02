@@ -8,7 +8,6 @@
 import Foundation
 
 public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var colorId: Int
     public var colorName: String
     public var yearFrom: Int?
@@ -54,4 +53,3 @@ public struct PartColor: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(elements, forKey: .elements)
     }
 }
-

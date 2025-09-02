@@ -6,7 +6,7 @@
 
 import Foundation
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 protocol ParameterConvertible {
@@ -15,7 +15,7 @@ protocol ParameterConvertible {
 
 /// An enum where the last case value can be used as a default catch-all.
 protocol CaseIterableDefaultsLast: Decodable & CaseIterable & RawRepresentable
-where RawValue: Decodable, AllCases: BidirectionalCollection {}
+    where RawValue: Decodable, AllCases: BidirectionalCollection {}
 
 extension CaseIterableDefaultsLast {
     /// Initializes an enum such that if a known raw value is found, then it is decoded.
@@ -64,7 +64,7 @@ extension NullEncodable: Codable where Wrapped: Codable {
         switch self {
         case .encodeNothing: return
         case .encodeNull: try container.encodeNil()
-        case .encodeValue(let wrapped): try container.encode(wrapped)
+        case let .encodeValue(wrapped): try container.encode(wrapped)
         }
     }
 }
@@ -113,19 +113,20 @@ public struct Response<T> {
         self.init(statusCode: response.statusCode, header: responseHeader, body: body, bodyData: bodyData)
     }
 }
-extension Response : Sendable where T : Sendable {}
+
+extension Response: Sendable where T: Sendable {}
 
 public final class RequestTask: @unchecked Sendable {
     private let lock = NSRecursiveLock()
     private var task: URLSessionDataTaskProtocol?
 
-    internal func set(task: URLSessionDataTaskProtocol) {
+    func set(task: URLSessionDataTaskProtocol) {
         lock.withLock {
             self.task = task
         }
     }
 
-    internal func get() -> URLSessionDataTaskProtocol? {
+    func get() -> URLSessionDataTaskProtocol? {
         lock.withLock {
             task
         }

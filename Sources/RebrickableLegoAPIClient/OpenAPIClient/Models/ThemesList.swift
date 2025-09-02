@@ -8,7 +8,6 @@
 import Foundation
 
 public struct ThemesList: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var count: Int
     public var next: String?
     public var previous: String?
@@ -38,4 +37,3 @@ public struct ThemesList: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(results, forKey: .results)
     }
 }
-

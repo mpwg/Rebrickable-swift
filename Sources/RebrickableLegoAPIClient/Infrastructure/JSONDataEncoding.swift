@@ -7,11 +7,10 @@
 
 import Foundation
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 public struct JSONDataEncoding: Sendable {
-
     // MARK: Properties
 
     private static let jsonDataKey = "jsonData"
@@ -52,5 +51,4 @@ public struct JSONDataEncoding: Sendable {
         }
         return returnedParams
     }
-
 }

@@ -8,7 +8,6 @@
 import Foundation
 
 public struct PartCategory: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var id: Int
     public var name: String
     public var partCount: Int
@@ -34,7 +33,6 @@ public struct PartCategory: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(partCount, forKey: .partCount)
     }
 }
-
 
 @available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension PartCategory: Identifiable {}

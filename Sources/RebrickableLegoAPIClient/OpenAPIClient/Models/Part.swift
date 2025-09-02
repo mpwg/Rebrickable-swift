@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Part: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var partNum: String
     public var name: String
     public var partCatId: Int
@@ -70,4 +69,3 @@ public struct Part: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(externalIds, forKey: .externalIds)
     }
 }
-

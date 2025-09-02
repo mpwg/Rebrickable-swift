@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Theme: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var id: Int
     public var parentId: Int?
     public var name: String
@@ -34,7 +33,6 @@ public struct Theme: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(name, forKey: .name)
     }
 }
-
 
 @available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension Theme: Identifiable {}

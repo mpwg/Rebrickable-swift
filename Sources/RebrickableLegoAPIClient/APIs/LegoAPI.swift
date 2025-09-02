@@ -8,10 +8,9 @@
 import Foundation
 
 open class LegoAPI {
-
     /**
      Get a list of all Colors.
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -24,7 +23,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ColorsList {
-        return try await legoColorsListWithRequestBuilder(
+        try await legoColorsListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -64,7 +63,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -78,12 +77,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details about a specific Color.
-    
+
      - parameter id: (path) A unique value identifying this color.
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -95,7 +95,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Color {
-        return try await legoColorsReadWithRequestBuilder(
+        try await legoColorsReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -122,7 +122,8 @@ open class LegoAPI {
         let idPostEscape =
             idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{id}", with: idPostEscape, options: .literal, range: nil)
+            of: "{id}", with: idPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -145,12 +146,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details about a specific Element ID.
-    
+
      - parameter elementId: (path)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Element
@@ -161,7 +163,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Element {
-        return try await legoElementsReadWithRequestBuilder(
+        try await legoElementsReadWithRequestBuilder(
             elementId: elementId, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -187,7 +189,8 @@ open class LegoAPI {
         let elementIdPostEscape =
             elementIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{element_id}", with: elementIdPostEscape, options: .literal, range: nil)
+            of: "{element_id}", with: elementIdPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -204,12 +207,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of Minifigs.
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter minParts: (query)  (optional)
@@ -229,7 +233,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
-        return try await legoMinifigsListWithRequestBuilder(
+        try await legoMinifigsListWithRequestBuilder(
             page: page, pageSize: pageSize, minParts: minParts, maxParts: maxParts,
             inSetNum: inSetNum, inThemeId: inThemeId, ordering: ordering, search: search,
             apiConfiguration: apiConfiguration
@@ -298,7 +302,7 @@ open class LegoAPI {
             "search": (
                 wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -312,12 +316,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Inventory Parts in this Minifig.
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -331,7 +336,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetPartsList {
-        return try await legoMinifigsPartsListWithRequestBuilder(
+        try await legoMinifigsPartsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, incPartDetails: incPartDetails,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -361,7 +366,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -378,7 +384,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -392,12 +398,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details for a specific Minifig.
-    
+
      - parameter setNum: (path)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Set
@@ -408,7 +415,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ModelSet {
-        return try await legoMinifigsReadWithRequestBuilder(
+        try await legoMinifigsReadWithRequestBuilder(
             setNum: setNum, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -434,7 +441,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -451,12 +459,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of Sets a Minifig has appeared in.
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -470,7 +479,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
-        return try await legoMinifigsSetsListWithRequestBuilder(
+        try await legoMinifigsSetsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, ordering: ordering,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -500,7 +509,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -517,7 +527,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -531,12 +541,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Part Categories.
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -549,7 +560,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartCategoriesList {
-        return try await legoPartCategoriesListWithRequestBuilder(
+        try await legoPartCategoriesListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -589,7 +600,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -603,12 +614,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details about a specific Part Category.
-    
+
      - parameter id: (path) A unique integer value identifying this part category.
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -620,7 +632,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartCategory {
-        return try await legoPartCategoriesReadWithRequestBuilder(
+        try await legoPartCategoriesReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -647,7 +659,8 @@ open class LegoAPI {
         let idPostEscape =
             idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{id}", with: idPostEscape, options: .literal, range: nil)
+            of: "{id}", with: idPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -670,12 +683,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Colors a Part has appeared in.
-    
+
      - parameter partNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -689,7 +703,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartColorsList {
-        return try await legoPartsColorsListWithRequestBuilder(
+        try await legoPartsColorsListWithRequestBuilder(
             partNum: partNum, page: page, pageSize: pageSize, ordering: ordering,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -719,7 +733,8 @@ open class LegoAPI {
         let partNumPostEscape =
             partNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil)
+            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -736,7 +751,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -750,12 +765,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details about a specific Part/Color combination.
-    
+
      - parameter partNum: (path)
      - parameter colorId: (path)
      - parameter apiConfiguration: The configuration for the http request.
@@ -767,7 +783,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartColor {
-        return try await legoPartsColorsReadWithRequestBuilder(
+        try await legoPartsColorsReadWithRequestBuilder(
             partNum: partNum, colorId: colorId, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -794,12 +810,14 @@ open class LegoAPI {
         let partNumPostEscape =
             partNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil)
+            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil
+        )
         let colorIdPreEscape = "\(APIHelper.mapValueToPathItem(colorId))"
         let colorIdPostEscape =
             colorIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{color_id}", with: colorIdPostEscape, options: .literal, range: nil)
+            of: "{color_id}", with: colorIdPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -816,12 +834,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Sets the Part/Color combination has appeard in.
-    
+
      - parameter partNum: (path)
      - parameter colorId: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
@@ -837,7 +856,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
-        return try await legoPartsColorsSetsListWithRequestBuilder(
+        try await legoPartsColorsSetsListWithRequestBuilder(
             partNum: partNum, colorId: colorId, page: page, pageSize: pageSize, ordering: ordering,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -869,12 +888,14 @@ open class LegoAPI {
         let partNumPostEscape =
             partNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil)
+            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil
+        )
         let colorIdPreEscape = "\(APIHelper.mapValueToPathItem(colorId))"
         let colorIdPostEscape =
             colorIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{color_id}", with: colorIdPostEscape, options: .literal, range: nil)
+            of: "{color_id}", with: colorIdPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -891,7 +912,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -905,12 +926,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of Parts.
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter partNum: (query) Rebrickable part_num (part number) to lookup. (optional)
@@ -936,7 +958,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> PartsList {
-        return try await legoPartsListWithRequestBuilder(
+        try await legoPartsListWithRequestBuilder(
             page: page, pageSize: pageSize, partNum: partNum, partNums: partNums,
             partCatId: partCatId, colorId: colorId, bricklinkId: bricklinkId,
             brickowlId: brickowlId, legoId: legoId, ldrawId: ldrawId, ordering: ordering,
@@ -1032,7 +1054,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1046,12 +1068,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details about a specific Part.
-    
+
      - parameter partNum: (path)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Part
@@ -1062,7 +1085,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Part {
-        return try await legoPartsReadWithRequestBuilder(
+        try await legoPartsReadWithRequestBuilder(
             partNum: partNum, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1088,7 +1111,8 @@ open class LegoAPI {
         let partNumPostEscape =
             partNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil)
+            of: "{part_num}", with: partNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1105,12 +1129,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -1124,7 +1149,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> MocList {
-        return try await legoSetsAlternatesListWithRequestBuilder(
+        try await legoSetsAlternatesListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, ordering: ordering,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -1154,7 +1179,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1171,7 +1197,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1185,12 +1211,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of Sets, optionally filtered by any of the below parameters.
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter themeId: (query)  (optional)
@@ -1211,7 +1238,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
-        return try await legoSetsListWithRequestBuilder(
+        try await legoSetsListWithRequestBuilder(
             page: page, pageSize: pageSize, themeId: themeId, minYear: minYear, maxYear: maxYear,
             minParts: minParts, maxParts: maxParts, ordering: ordering, search: search,
             apiConfiguration: apiConfiguration
@@ -1285,7 +1312,7 @@ open class LegoAPI {
             "search": (
                 wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1299,12 +1326,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Inventory Minifigs in this Set.
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -1317,7 +1345,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetMinifigsList {
-        return try await legoSetsMinifigsListWithRequestBuilder(
+        try await legoSetsMinifigsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1345,7 +1373,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1358,7 +1387,7 @@ open class LegoAPI {
             "page_size": (
                 wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1372,12 +1401,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Inventory Parts in this Set.
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -1391,7 +1421,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetPartsList {
-        return try await legoSetsPartsListWithRequestBuilder(
+        try await legoSetsPartsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, incPartDetails: incPartDetails,
             apiConfiguration: apiConfiguration
         ).execute().body
@@ -1421,7 +1451,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1438,7 +1469,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1452,12 +1483,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get details for a specific Set.
-    
+
      - parameter setNum: (path)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Set
@@ -1468,7 +1500,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ModelSet {
-        return try await legoSetsReadWithRequestBuilder(
+        try await legoSetsReadWithRequestBuilder(
             setNum: setNum, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1494,7 +1526,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1511,12 +1544,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Get a list of all Inventory Sets in this Set.
-    
+
      - parameter setNum: (path)
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
@@ -1529,7 +1563,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> SetList {
-        return try await legoSetsSetsListWithRequestBuilder(
+        try await legoSetsSetsListWithRequestBuilder(
             setNum: setNum, page: page, pageSize: pageSize, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1557,7 +1591,8 @@ open class LegoAPI {
         let setNumPostEscape =
             setNumPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil)
+            of: "{set_num}", with: setNumPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1570,7 +1605,7 @@ open class LegoAPI {
             "page_size": (
                 wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1584,12 +1619,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Return all Themes
-    
+
      - parameter page: (query) A page number within the paginated result set. (optional)
      - parameter pageSize: (query) Number of results to return per page. (optional)
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
@@ -1602,7 +1638,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> ThemesList {
-        return try await legoThemesListWithRequestBuilder(
+        try await legoThemesListWithRequestBuilder(
             page: page, pageSize: pageSize, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1642,7 +1678,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            ),
+            )
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1656,12 +1692,13 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 
     /**
      Return details for a specific Theme
-    
+
      - parameter id: (path) A unique integer value identifying this theme.
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter apiConfiguration: The configuration for the http request.
@@ -1673,7 +1710,7 @@ open class LegoAPI {
         apiConfiguration: RebrickableLegoAPIClientAPIConfiguration =
             RebrickableLegoAPIClientAPIConfiguration.shared
     ) async throws(ErrorResponse) -> Theme {
-        return try await legoThemesReadWithRequestBuilder(
+        try await legoThemesReadWithRequestBuilder(
             id: id, ordering: ordering, apiConfiguration: apiConfiguration
         ).execute().body
     }
@@ -1700,7 +1737,8 @@ open class LegoAPI {
         let idPostEscape =
             idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(
-            of: "{id}", with: idPostEscape, options: .literal, range: nil)
+            of: "{id}", with: idPostEscape, options: .literal, range: nil
+        )
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
@@ -1723,6 +1761,7 @@ open class LegoAPI {
             method: "GET",
             URLString: (localVariableUrlComponents?.string ?? localVariableURLString),
             parameters: localVariableParameters, headers: localVariableHeaderParameters,
-            requiresAuthentication: true, apiConfiguration: apiConfiguration)
+            requiresAuthentication: true, apiConfiguration: apiConfiguration
+        )
     }
 }

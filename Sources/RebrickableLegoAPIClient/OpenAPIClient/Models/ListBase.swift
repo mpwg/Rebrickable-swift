@@ -8,7 +8,6 @@
 import Foundation
 
 public struct ListBase: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var count: Int
     public var next: String?
     public var previous: String?
@@ -34,4 +33,3 @@ public struct ListBase: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encodeIfPresent(previous, forKey: .previous)
     }
 }
-

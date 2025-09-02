@@ -19,6 +19,7 @@ public struct NumericRule<T: Comparable & Numeric> {
     public var exclusiveMaximum = false
     public var multipleOf: T?
 }
+
 extension NumericRule: Sendable where T: Sendable {}
 
 public struct ArrayRule: Sendable {
@@ -43,7 +44,7 @@ public struct ValidationError<T: Error & Hashable>: Error {
     public fileprivate(set) var kinds: Set<T>
 }
 
-public struct Validator {
+public enum Validator {
     /// Validate a string against a rule.
     /// - Parameter string: The String you wish to validate.
     /// - Parameter rule: The StringRule you wish to use for validation.
@@ -139,7 +140,7 @@ public struct Validator {
     /// - Parameter rule: The ArrayRule you wish to use for validation.
     /// - Returns: A validated array.
     /// - Throws: `ValidationError<ArrayValidationErrorKind>` if the string is invalid against the rule.
-    public static func validate(_ array: Array<AnyHashable>, against rule: ArrayRule) throws(ValidationError<ArrayValidationErrorKind>) -> Array<AnyHashable> {
+    public static func validate(_ array: [AnyHashable], against rule: ArrayRule) throws(ValidationError<ArrayValidationErrorKind>) -> [AnyHashable] {
         var error = ValidationError<ArrayValidationErrorKind>(kinds: [])
         if let minItems = rule.minItems, !(minItems <= array.count) {
             error.kinds.insert(.minItems)

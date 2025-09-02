@@ -8,7 +8,6 @@
 import Foundation
 
 public struct SetBase: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var setNum: String
     public var name: String
     public var year: Int?
@@ -42,4 +41,3 @@ public struct SetBase: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(numParts, forKey: .numParts)
     }
 }
-

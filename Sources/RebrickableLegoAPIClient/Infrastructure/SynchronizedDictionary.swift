@@ -6,20 +6,19 @@
 
 import Foundation
 
-internal struct SynchronizedDictionary<K: Hashable, V> : @unchecked Sendable {
-
+struct SynchronizedDictionary<K: Hashable, V>: @unchecked Sendable {
     private var dictionary = [K: V]()
     private let lock = NSRecursiveLock()
 
-    internal subscript(key: K) -> V? {
+    subscript(key: K) -> V? {
         get {
             lock.withLock {
-                self.dictionary[key]
+                dictionary[key]
             }
         }
         set {
             lock.withLock {
-                self.dictionary[key] = newValue
+                dictionary[key] = newValue
             }
         }
     }

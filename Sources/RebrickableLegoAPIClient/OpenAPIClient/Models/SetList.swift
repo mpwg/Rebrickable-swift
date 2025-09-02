@@ -8,7 +8,6 @@
 import Foundation
 
 public struct SetList: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var count: Int
     public var next: String?
     public var previous: String?

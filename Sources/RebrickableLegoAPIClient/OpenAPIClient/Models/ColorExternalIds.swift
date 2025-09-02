@@ -8,7 +8,6 @@
 import Foundation
 
 public struct ColorExternalIds: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var brickLink: ColorExternalProvider
     public var brickOwl: ColorExternalProvider
     public var lDraw: ColorExternalProvider
@@ -42,4 +41,3 @@ public struct ColorExternalIds: Sendable, Codable, ParameterConvertible, Hashabl
         try container.encode(peeron, forKey: .peeron)
     }
 }
-

@@ -8,7 +8,6 @@
 import Foundation
 
 public struct SetPartMinifig: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var id: Int
     public var setNum: String
     public var setName: String?
@@ -42,7 +41,6 @@ public struct SetPartMinifig: Sendable, Codable, ParameterConvertible, Hashable 
         try container.encodeIfPresent(setImgUrl, forKey: .setImgUrl)
     }
 }
-
 
 @available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension SetPartMinifig: Identifiable {}

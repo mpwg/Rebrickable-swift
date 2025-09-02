@@ -15,8 +15,9 @@ public enum JSONValue: Sendable, Codable, Hashable {
     case array([JSONValue])
     case dictionary([String: JSONValue])
     case null
-    
+
     // MARK: - Decoding Logic
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
 
@@ -40,21 +41,22 @@ public enum JSONValue: Sendable, Codable, Hashable {
     }
 
     // MARK: - Encoding Logic
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        
+
         switch self {
-        case .string(let value):
+        case let .string(value):
             try container.encode(value)
-        case .int(let value):
+        case let .int(value):
             try container.encode(value)
-        case .double(let value):
+        case let .double(value):
             try container.encode(value)
-        case .bool(let value):
+        case let .bool(value):
             try container.encode(value)
-        case .array(let value):
+        case let .array(value):
             try container.encode(value)
-        case .dictionary(let value):
+        case let .dictionary(value):
             try container.encode(value)
         case .null:
             try container.encodeNil()
@@ -62,123 +64,122 @@ public enum JSONValue: Sendable, Codable, Hashable {
     }
 }
 
-extension JSONValue {
-    public init(_ value: String) {
+public extension JSONValue {
+    init(_ value: String) {
         self = .string(value)
     }
-    
-    public init(_ value: Int) {
+
+    init(_ value: Int) {
         self = .int(value)
     }
-    
-    public init(_ value: Double) {
+
+    init(_ value: Double) {
         self = .double(value)
     }
-    
-    public init(_ value: Bool) {
+
+    init(_ value: Bool) {
         self = .bool(value)
     }
-    
-    public init(_ value: [JSONValue]) {
+
+    init(_ value: [JSONValue]) {
         self = .array(value)
     }
-    
-    public init(_ value: [String: JSONValue]) {
+
+    init(_ value: [String: JSONValue]) {
         self = .dictionary(value)
     }
-    
-    public init<T: Codable>(_ codable: T) throws {
+
+    init<T: Codable>(_ codable: T) throws {
         let encoder = JSONEncoder()
         let encodedData = try encoder.encode(codable)
         let decoder = JSONDecoder()
-        
+
         let decodedValue = try decoder.decode(JSONValue.self, from: encodedData)
         self = decodedValue
     }
 }
 
-extension JSONValue {
-    public var isString: Bool {
+public extension JSONValue {
+    var isString: Bool {
         if case .string = self { return true }
         return false
     }
 
-    public var isInt: Bool {
+    var isInt: Bool {
         if case .int = self { return true }
         return false
     }
 
-    public var isDouble: Bool {
+    var isDouble: Bool {
         if case .double = self { return true }
         return false
     }
 
-    public var isBool: Bool {
+    var isBool: Bool {
         if case .bool = self { return true }
         return false
     }
 
-    public var isArray: Bool {
+    var isArray: Bool {
         if case .array = self { return true }
         return false
     }
 
-    public var isDictionary: Bool {
+    var isDictionary: Bool {
         if case .dictionary = self { return true }
         return false
     }
 
-    public var isNull: Bool {
-        return self == .null
+    var isNull: Bool {
+        self == .null
     }
-
 }
 
-extension JSONValue {
-    public var stringValue: String? {
+public extension JSONValue {
+    var stringValue: String? {
         switch self {
-        case .string(let value):
+        case let .string(value):
             return value
         default:
             return nil
         }
     }
 
-    public var intValue: Int? {
+    var intValue: Int? {
         switch self {
-        case .int(let value):
+        case let .int(value):
             return value
         default:
             return nil
         }
     }
 
-    public var doubleValue: Double? {
+    var doubleValue: Double? {
         switch self {
-        case .double(let value):
+        case let .double(value):
             return value
         default:
             return nil
         }
     }
 
-    public var boolValue: Bool? {
+    var boolValue: Bool? {
         switch self {
-        case .bool(let value):
+        case let .bool(value):
             return value
         default:
             return nil
         }
     }
 
-    public var arrayValue: [JSONValue]? {
+    var arrayValue: [JSONValue]? {
         if case let .array(value) = self {
             return value
         }
         return nil
     }
 
-    public var dictionaryValue: [String: JSONValue]? {
+    var dictionaryValue: [String: JSONValue]? {
         if case let .dictionary(value) = self {
             return value
         }
@@ -186,13 +187,13 @@ extension JSONValue {
     }
 }
 
-extension JSONValue {
-    public subscript(key: String) -> JSONValue? {
-        return dictionaryValue?[key]
+public extension JSONValue {
+    subscript(key: String) -> JSONValue? {
+        dictionaryValue?[key]
     }
 
-    public subscript(index: Int) -> JSONValue? {
-        guard case let .array(array) = self, index >= 0 && index < array.count else {
+    subscript(index: Int) -> JSONValue? {
+        guard case let .array(array) = self, index >= 0, index < array.count else {
             return nil
         }
         return array[index]
@@ -217,7 +218,6 @@ extension JSONValue: ExpressibleByFloatLiteral {
     }
 }
 
-
 extension JSONValue: ExpressibleByBooleanLiteral {
     public init(booleanLiteral value: BooleanLiteralType) {
         self = .bool(value)
@@ -241,7 +241,7 @@ extension JSONValue: ExpressibleByDictionaryLiteral {
 }
 
 extension JSONValue: ExpressibleByNilLiteral {
-    public init(nilLiteral: ()) {
+    public init(nilLiteral _: ()) {
         self = .null
     }
 }

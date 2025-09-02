@@ -8,7 +8,6 @@
 import Foundation
 
 public struct PartExternalIds: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var brickLink: [String]
     public var brickOwl: [String]
     public var brickset: [String]?
@@ -42,4 +41,3 @@ public struct PartExternalIds: Sendable, Codable, ParameterConvertible, Hashable
         try container.encodeIfPresent(LEGO, forKey: .LEGO)
     }
 }
-

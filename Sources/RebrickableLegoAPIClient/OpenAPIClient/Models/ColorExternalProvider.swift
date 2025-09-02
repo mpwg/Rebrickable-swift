@@ -8,7 +8,6 @@
 import Foundation
 
 public struct ColorExternalProvider: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var extDescrs: [[String]]
     public var extIds: [Int]
 
@@ -30,4 +29,3 @@ public struct ColorExternalProvider: Sendable, Codable, ParameterConvertible, Ha
         try container.encode(extIds, forKey: .extIds)
     }
 }
-

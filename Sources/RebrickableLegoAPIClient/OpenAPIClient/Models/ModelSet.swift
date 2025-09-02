@@ -8,7 +8,6 @@
 import Foundation
 
 public struct ModelSet: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var setNum: String
     public var name: String
     public var year: Int?
@@ -54,4 +53,3 @@ public struct ModelSet: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(lastModifiedDt, forKey: .lastModifiedDt)
     }
 }
-

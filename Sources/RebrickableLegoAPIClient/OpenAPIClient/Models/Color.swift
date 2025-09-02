@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Color: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var externalIds: ColorExternalIds
     public var id: Int
     public var isTrans: Bool
@@ -42,7 +41,6 @@ public struct Color: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(rgb, forKey: .rgb)
     }
 }
-
 
 @available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension Color: Identifiable {}

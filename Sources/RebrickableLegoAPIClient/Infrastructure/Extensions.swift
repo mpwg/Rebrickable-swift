@@ -6,51 +6,51 @@
 
 import Foundation
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 extension Bool: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Float: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Int: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Int32: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Int64: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Double: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension Decimal: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension String: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension URL: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension UUID: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { self }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { self }
 }
 
 extension RawRepresentable where RawValue: ParameterConvertible, RawValue: Sendable {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable { return self.rawValue }
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable { rawValue }
 }
 
 private func encodeIfPossible<T: Sendable>(_ object: T, codableHelper: CodableHelper) -> any Sendable {
@@ -63,13 +63,13 @@ private func encodeIfPossible<T: Sendable>(_ object: T, codableHelper: CodableHe
 
 extension Array where Element: Sendable {
     func asParameter(codableHelper: CodableHelper) -> any Sendable {
-        return self.map { encodeIfPossible($0, codableHelper: codableHelper) }
+        map { encodeIfPossible($0, codableHelper: codableHelper) }
     }
 }
 
 extension Set where Element: Sendable {
     func asParameter(codableHelper: CodableHelper) -> any Sendable {
-        return Array(self).asParameter(codableHelper: codableHelper)
+        Array(self).asParameter(codableHelper: codableHelper)
     }
 }
 
@@ -84,14 +84,14 @@ extension Dictionary where Key: Sendable, Value: Sendable {
 }
 
 extension Data: ParameterConvertible {
-    func asParameter(codableHelper: CodableHelper) -> any Sendable {
-        return self.base64EncodedString(options: Data.Base64EncodingOptions())
+    func asParameter(codableHelper _: CodableHelper) -> any Sendable {
+        base64EncodedString(options: Data.Base64EncodingOptions())
     }
 }
 
 extension Date: ParameterConvertible {
     func asParameter(codableHelper: CodableHelper) -> any Sendable {
-        return codableHelper.dateFormatter.string(from: self)
+        codableHelper.dateFormatter.string(from: self)
     }
 }
 
@@ -105,9 +105,8 @@ extension ParameterConvertible where Self: Encodable {
 }
 
 extension String: @retroactive CodingKey {
-
     public var stringValue: String {
-        return self
+        self
     }
 
     public init?(stringValue: String) {
@@ -115,41 +114,39 @@ extension String: @retroactive CodingKey {
     }
 
     public var intValue: Int? {
-        return nil
+        nil
     }
 
-    public init?(intValue: Int) {
-        return nil
+    public init?(intValue _: Int) {
+        nil
     }
-
 }
 
-extension KeyedEncodingContainerProtocol {
-
-    public mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T: Encodable {
+public extension KeyedEncodingContainerProtocol {
+    mutating func encodeArray<T>(_ values: [T], forKey key: Self.Key) throws where T: Encodable {
         var arrayContainer = nestedUnkeyedContainer(forKey: key)
         try arrayContainer.encode(contentsOf: values)
     }
 
-    public mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T: Encodable {
+    mutating func encodeArrayIfPresent<T>(_ values: [T]?, forKey key: Self.Key) throws where T: Encodable {
         if let values = values {
             try encodeArray(values, forKey: key)
         }
     }
 
-    public mutating func encodeMap<T>(_ pairs: [Self.Key: T]) throws where T: Encodable {
+    mutating func encodeMap<T>(_ pairs: [Self.Key: T]) throws where T: Encodable {
         for (key, value) in pairs {
             try encode(value, forKey: key)
         }
     }
 
-    public mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key: T]?) throws where T: Encodable {
+    mutating func encodeMapIfPresent<T>(_ pairs: [Self.Key: T]?) throws where T: Encodable {
         if let pairs = pairs {
             try encodeMap(pairs)
         }
     }
 
-    public mutating func encode(_ value: Decimal, forKey key: Self.Key) throws {
+    mutating func encode(_ value: Decimal, forKey key: Self.Key) throws {
         let decimalNumber = NSDecimalNumber(decimal: value)
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -158,16 +155,15 @@ extension KeyedEncodingContainerProtocol {
         try encode(formattedString, forKey: key)
     }
 
-    public mutating func encodeIfPresent(_ value: Decimal?, forKey key: Self.Key) throws {
+    mutating func encodeIfPresent(_ value: Decimal?, forKey key: Self.Key) throws {
         if let value = value {
             try encode(value, forKey: key)
         }
     }
 }
 
-extension KeyedDecodingContainerProtocol {
-
-    public func decodeArray<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T] where T: Decodable {
+public extension KeyedDecodingContainerProtocol {
+    func decodeArray<T>(_: T.Type, forKey key: Self.Key) throws -> [T] where T: Decodable {
         var tmpArray = [T]()
 
         var nestedContainer = try nestedUnkeyedContainer(forKey: key)
@@ -179,7 +175,7 @@ extension KeyedDecodingContainerProtocol {
         return tmpArray
     }
 
-    public func decodeArrayIfPresent<T>(_ type: T.Type, forKey key: Self.Key) throws -> [T]? where T: Decodable {
+    func decodeArrayIfPresent<T>(_: T.Type, forKey key: Self.Key) throws -> [T]? where T: Decodable {
         var tmpArray: [T]?
 
         if contains(key) {
@@ -189,7 +185,7 @@ extension KeyedDecodingContainerProtocol {
         return tmpArray
     }
 
-    public func decodeMap<T>(_ type: T.Type, excludedKeys: Set<Self.Key>) throws -> [Self.Key: T] where T: Decodable {
+    func decodeMap<T>(_: T.Type, excludedKeys: Set<Self.Key>) throws -> [Self.Key: T] where T: Decodable {
         var map: [Self.Key: T] = [:]
 
         for key in allKeys {
@@ -202,7 +198,7 @@ extension KeyedDecodingContainerProtocol {
         return map
     }
 
-    public func decode(_ type: Decimal.Type, forKey key: Self.Key) throws -> Decimal {
+    func decode(_ type: Decimal.Type, forKey key: Self.Key) throws -> Decimal {
         let stringValue = try decode(String.self, forKey: key)
         guard let decimalValue = Decimal(string: stringValue) else {
             let context = DecodingError.Context(codingPath: [key], debugDescription: "The key \(key) couldn't be converted to a Decimal value")
@@ -212,7 +208,7 @@ extension KeyedDecodingContainerProtocol {
         return decimalValue
     }
 
-    public func decodeIfPresent(_ type: Decimal.Type, forKey key: Self.Key) throws -> Decimal? {
+    func decodeIfPresent(_ type: Decimal.Type, forKey key: Self.Key) throws -> Decimal? {
         guard let stringValue = try decodeIfPresent(String.self, forKey: key) else {
             return nil
         }
@@ -223,5 +219,4 @@ extension KeyedDecodingContainerProtocol {
 
         return decimalValue
     }
-
 }

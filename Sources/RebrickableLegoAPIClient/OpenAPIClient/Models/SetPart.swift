@@ -8,7 +8,6 @@
 import Foundation
 
 public struct SetPart: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var id: Int
     public var invPartId: Int
     public var part: Part
@@ -58,7 +57,6 @@ public struct SetPart: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(numSets, forKey: .numSets)
     }
 }
-
 
 @available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension SetPart: Identifiable {}

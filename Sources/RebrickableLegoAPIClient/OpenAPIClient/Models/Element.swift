@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Element: Sendable, Codable, ParameterConvertible, Hashable {
-
     public var part: Part
     public var color: Color
     public var elementId: String
@@ -46,4 +45,3 @@ public struct Element: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(partImgUrl, forKey: .partImgUrl)
     }
 }
-
