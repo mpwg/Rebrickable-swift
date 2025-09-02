@@ -8,13 +8,16 @@
 import Foundation
 
 public struct ColorExternalIds: Sendable, Codable, ParameterConvertible, Hashable {
-    public var brickLink: ColorExternalProvider
-    public var brickOwl: ColorExternalProvider
-    public var lDraw: ColorExternalProvider
-    public var LEGO: ColorExternalProvider
-    public var peeron: ColorExternalProvider
+    public var brickLink: ColorExternalProvider?
+    public var brickOwl: ColorExternalProvider?
+    public var lDraw: ColorExternalProvider?
+    public var LEGO: ColorExternalProvider?
+    public var peeron: ColorExternalProvider?
 
-    public init(brickLink: ColorExternalProvider, brickOwl: ColorExternalProvider, lDraw: ColorExternalProvider, LEGO: ColorExternalProvider, peeron: ColorExternalProvider) {
+    public init(
+        brickLink: ColorExternalProvider?, brickOwl: ColorExternalProvider?,
+        lDraw: ColorExternalProvider?, LEGO: ColorExternalProvider?, peeron: ColorExternalProvider?
+    ) {
         self.brickLink = brickLink
         self.brickOwl = brickOwl
         self.lDraw = lDraw
