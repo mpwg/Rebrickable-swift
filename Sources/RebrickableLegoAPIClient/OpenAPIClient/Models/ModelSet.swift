@@ -8,16 +8,20 @@
 import Foundation
 
 public struct ModelSet: Sendable, Codable, ParameterConvertible, Hashable {
-    public var setNum: String
-    public var name: String
+    public var setNum: String?
+    public var name: String?
     public var year: Int?
     public var themeId: Int?
-    public var numParts: Int
-    public var setImgUrl: String
-    public var setUrl: String
-    public var lastModifiedDt: Date
+    public var numParts: Int?
+    public var setImgUrl: String?
+    public var setUrl: String?
+    public var lastModifiedDt: Date?
 
-    public init(setNum: String, name: String, year: Int? = nil, themeId: Int? = nil, numParts: Int, setImgUrl: String, setUrl: String, lastModifiedDt: Date) {
+    public init(
+        setNum: String? = nil, name: String? = nil, year: Int? = nil, themeId: Int? = nil,
+        numParts: Int? = nil, setImgUrl: String? = nil, setUrl: String? = nil,
+        lastModifiedDt: Date? = nil
+    ) {
         self.setNum = setNum
         self.name = name
         self.year = year

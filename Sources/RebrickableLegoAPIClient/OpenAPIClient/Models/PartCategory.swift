@@ -8,11 +8,11 @@
 import Foundation
 
 public struct PartCategory: Sendable, Codable, ParameterConvertible, Hashable {
-    public var id: Int
-    public var name: String
-    public var partCount: Int
+    public var id: Int?
+    public var name: String?
+    public var partCount: Int?
 
-    public init(id: Int, name: String, partCount: Int) {
+    public init(id: Int? = nil, name: String? = nil, partCount: Int? = nil) {
         self.id = id
         self.name = name
         self.partCount = partCount

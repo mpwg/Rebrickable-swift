@@ -44,7 +44,7 @@ open class RebrickableLegoAPIClientAPIConfiguration: @unchecked Sendable {
         requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory(),
         apiResponseQueue: DispatchQueue = .main,
         codableHelper: CodableHelper = CodableHelper(),
-        successfulStatusCodeRange: Range<Int> = 200..<300,
+        successfulStatusCodeRange: Range<Int> = 200 ..< 300,
         interceptor: OpenAPIInterceptor = DefaultOpenAPIInterceptor()
     ) {
         self.basePath = basePath
@@ -104,7 +104,7 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
     @discardableResult
     open func execute(
         completion _:
-            @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void
+        @Sendable @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void
     ) -> RequestTask {
         requestTask
     }
@@ -124,10 +124,10 @@ open class RequestBuilder<T>: @unchecked Sendable, Identifiable {
 
                     self.execute { result in
                         switch result {
-                        case .success(let response):
+                        case let .success(response):
                             nonisolated(unsafe) let response = response
                             continuation.resume(returning: response)
-                        case .failure(let error):
+                        case let .failure(error):
                             continuation.resume(throwing: error)
                         }
                     }

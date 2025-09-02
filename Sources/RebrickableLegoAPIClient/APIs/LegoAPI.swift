@@ -63,7 +63,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -132,7 +132,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -302,7 +302,7 @@ open class LegoAPI {
             "search": (
                 wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -384,7 +384,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -527,7 +527,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -600,7 +600,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -669,7 +669,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -751,7 +751,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -912,7 +912,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1054,7 +1054,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1197,7 +1197,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1312,7 +1312,7 @@ open class LegoAPI {
             "search": (
                 wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1387,7 +1387,7 @@ open class LegoAPI {
             "page_size": (
                 wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1469,7 +1469,7 @@ open class LegoAPI {
             "inc_part_details": (
                 wrappedValue: incPartDetails?.asParameter(
                     codableHelper: apiConfiguration.codableHelper), isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1605,7 +1605,7 @@ open class LegoAPI {
             "page_size": (
                 wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1678,7 +1678,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]
@@ -1747,7 +1747,7 @@ open class LegoAPI {
             "ordering": (
                 wrappedValue: ordering?.asParameter(codableHelper: apiConfiguration.codableHelper),
                 isExplode: true
-            )
+            ),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [:]

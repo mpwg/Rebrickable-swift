@@ -8,14 +8,14 @@
 import Foundation
 
 public struct Element: Sendable, Codable, ParameterConvertible, Hashable {
-    public var part: Part
-    public var color: Color
-    public var elementId: String
-    public var designId: String
-    public var elementImgUrl: String
-    public var partImgUrl: String
+    public var part: Part?
+    public var color: Color?
+    public var elementId: String?
+    public var designId: String?
+    public var elementImgUrl: String?
+    public var partImgUrl: String?
 
-    public init(part: Part, color: Color, elementId: String, designId: String, elementImgUrl: String, partImgUrl: String) {
+    public init(part: Part? = nil, color: Color? = nil, elementId: String? = nil, designId: String? = nil, elementImgUrl: String? = nil, partImgUrl: String? = nil) {
         self.part = part
         self.color = color
         self.elementId = elementId
@@ -41,7 +41,7 @@ public struct Element: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(color, forKey: .color)
         try container.encode(elementId, forKey: .elementId)
         try container.encode(designId, forKey: .designId)
-        try container.encode(elementImgUrl, forKey: .elementImgUrl)
-        try container.encode(partImgUrl, forKey: .partImgUrl)
+        try container.encodeIfPresent(elementImgUrl, forKey: .elementImgUrl)
+        try container.encodeIfPresent(partImgUrl, forKey: .partImgUrl)
     }
 }

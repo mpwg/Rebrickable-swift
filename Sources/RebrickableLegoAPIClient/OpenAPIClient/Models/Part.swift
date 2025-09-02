@@ -8,20 +8,25 @@
 import Foundation
 
 public struct Part: Sendable, Codable, ParameterConvertible, Hashable {
-    public var partNum: String
-    public var name: String
+    public var partNum: String?
+    public var name: String?
     public var partCatId: Int
     public var yearFrom: Int?
     public var yearTo: Int?
     public var partUrl: String
     public var partImgUrl: String?
-    public var prints: [String]?
-    public var molds: [String]?
-    public var alternates: [String]?
+    public var prints: [String?]?
+    public var molds: [String?]?
+    public var alternates: [String?]?
     public var printOf: String?
-    public var externalIds: PartExternalIds
+    public var externalIds: PartExternalIds?
 
-    public init(partNum: String, name: String, partCatId: Int, yearFrom: Int? = nil, yearTo: Int? = nil, partUrl: String, partImgUrl: String? = nil, prints: [String]? = nil, molds: [String]? = nil, alternates: [String]? = nil, printOf: String? = nil, externalIds: PartExternalIds) {
+    public init(
+        partNum: String? = nil, name: String? = nil, partCatId: Int, yearFrom: Int? = nil,
+        yearTo: Int? = nil, partUrl: String, partImgUrl: String? = nil, prints: [String?]? = nil,
+        molds: [String?]? = nil, alternates: [String?]? = nil, printOf: String? = nil,
+        externalIds: PartExternalIds? = nil
+    ) {
         self.partNum = partNum
         self.name = name
         self.partCatId = partCatId
