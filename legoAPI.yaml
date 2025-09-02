@@ -1,10 +1,11 @@
 openapi: 3.0.1
 info:
-  title: ""
-  description: ""
-  version: ""
+  title: "Rebrickable LEGO API"
+  description: "Swift API client for Rebrickable's LEGO database API - a comprehensive database of LEGO sets, parts, colors, and themes."
+  version: "1.0.0"
 servers:
-- url: https://rebrickable.com/
+- url: https://rebrickable.com
+  description: Rebrickable API server
 security:
 - ApiKeyAuth: []
 paths:
@@ -35,7 +36,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/colorsList'
   /api/v3/lego/colors/{id}/:
@@ -61,7 +62,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/color'
   /api/v3/lego/elements/{element_id}/:
@@ -81,7 +82,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/element'
   /api/v3/lego/minifigs/:
@@ -132,7 +133,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setList'
   /api/v3/lego/minifigs/{set_num}/:
@@ -152,7 +153,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/set'
   /api/v3/lego/minifigs/{set_num}/parts/:
@@ -190,7 +191,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setPartsList'
   /api/v3/lego/minifigs/{set_num}/sets/:
@@ -225,7 +226,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setList'
   /api/v3/lego/part_categories/:
@@ -255,7 +256,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/partCategoriesList'
   /api/v3/lego/part_categories/{id}/:
@@ -281,7 +282,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/partCategory'
   /api/v3/lego/parts/:
@@ -366,7 +367,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/partsList'
   /api/v3/lego/parts/{part_num}/:
@@ -386,7 +387,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/part'
   /api/v3/lego/parts/{part_num}/colors/:
@@ -421,7 +422,7 @@ paths:
         "200":
           description: List of all colors a part has appeared in
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/partColorsList'
   /api/v3/lego/parts/{part_num}/colors/{color_id}/:
@@ -446,7 +447,7 @@ paths:
         "200":
           description: Details about a specific Part/Color combination
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/partColor'
   /api/v3/lego/parts/{part_num}/colors/{color_id}/sets/:
@@ -487,7 +488,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setList'
   /api/v3/lego/sets/:
@@ -542,7 +543,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setList'
   /api/v3/lego/sets/{set_num}/:
@@ -562,7 +563,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/set'
   /api/v3/lego/sets/{set_num}/alternates/:
@@ -600,7 +601,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/mocList'
   /api/v3/lego/sets/{set_num}/minifigs/:
@@ -630,7 +631,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setMinifigsList'
   /api/v3/lego/sets/{set_num}/parts/:
@@ -670,7 +671,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setPartsList'
   /api/v3/lego/sets/{set_num}/sets/:
@@ -700,7 +701,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/setList'
   /api/v3/lego/themes/:
@@ -730,7 +731,7 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/themesList'
   /api/v3/lego/themes/{id}/:
@@ -756,1581 +757,9 @@ paths:
         "200":
           description: ""
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: '#/components/schemas/theme'
-  /api/v3/swagger/:
-    get:
-      tags:
-      - swagger
-      operationId: swagger_list
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/_token/:
-    post:
-      tags:
-      - users
-      summary: Generate a User Token to be used for authorising user account actions
-        in subsequent calls. Username can be either
-      description: |-
-        Generate a User Token to be used for authorising user account actions in subsequent calls. Username can be either
-         the actual username or the user's email address.
-      operationId: users__token_create
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - password
-              - username
-              type: object
-              properties:
-                username:
-                  type: string
-                  description: Username (or email) of user
-                password:
-                  type: string
-                  description: Password of user
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/allparts/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Parts in all the user's Part Lists as well as
-        the Parts inside Sets in the user's Set Lists.
-      description: |-
-        Get a list of all the Parts in all the user's Part Lists as well as the Parts inside Sets in the user's Set Lists.
-
-        ###WARNING this call is very resource intensive, do not overuse it!
-
-        Optionally, filter by one or more of the below query parameters.
-      operationId: users_allparts_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: part_num
-        in: query
-        schema:
-          type: string
-      - name: part_cat_id
-        in: query
-        schema:
-          type: number
-      - name: color_id
-        in: query
-        schema:
-          type: number
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/build/{set_num}/:
-    get:
-      tags:
-      - users
-      summary: Find out how many parts the user needs to build the specified Set.
-      description: |-
-        Find out how many parts the user needs to build the specified Set.
-
-        The user's default Build Settings will be used to calculate a Build Match % using their LEGO Collection of Sets
-        and Parts.
-      operationId: users_build_read
-      parameters:
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/lost_parts/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Lost Parts from the user's LEGO collection.
-      description: |-
-        Get a list of all the Lost Parts from the user's LEGO collection.
-
-        Optionally, filter by one or more of the below query parameters.
-      operationId: users_lost_parts_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add one or more Lost Parts to the user.
-      description: |-
-        Add one or more Lost Parts to the user.
-
-        ### Single Part
-        When adding a single Part, returns the successfully created Part (status 201) or details for why the Part could not
-        be added.
-        ### Multiple Parts
-        To add multiple Parts, POST a JSON list of them (using a Content-Type header of 'application/json'). The inv_part_id
-        field can be retrieved from the Set's inventory.
-        e.g:
-        `[{"inv_part_id": 806698, "lost_quantity": 3},
-          {"inv_part_id": 256007, "lost_quantity": 2}]`
-        Returns a list of successfully added Parts. If the Part already exists or is unrecognised, it will be skipped.
-      operationId: users_lost_parts_create
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - inv_part_id
-              type: object
-              properties:
-                lost_quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                inv_part_id:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/lost_parts/{id}/:
-    delete:
-      tags:
-      - users
-      summary: Remove the Lost Part from the user.
-      description: Remove the Lost Part from the user.
-      operationId: users_lost_parts_delete
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/minifigs/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Minifigs in all the user's Sets. Note that this
-        is a read-only list as Minifigs are
-      description: |-
-        Get a list of all the Minifigs in all the user's Sets. Note that this is a read-only list as Minifigs are
-        automatically determined by the Sets in the user's Set Lists.
-
-        Minifigs that were manually added to Set Lists can be retrieved via the
-        GET /api/v3/users/{user_token}/sets/ endpoint.
-
-        Optionally, filter by one or more of the below query parameters.
-      operationId: users_minifigs_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: fig_set_num
-        in: query
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/partlists/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the user's Part Lists.
-      description: Get a list of all the user's Part Lists.
-      operationId: users_partlists_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add a new Part List.
-      description: Add a new Part List.
-      operationId: users_partlists_create
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - name
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_parts:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/partlists/{list_id}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Part List.
-      description: Get details about a specific Part List.
-      operationId: users_partlists_read
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    put:
-      tags:
-      - users
-      summary: Replace an existing Part List's details.
-      description: Replace an existing Part List's details.
-      operationId: users_partlists_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - name
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_parts:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "200":
-          description: ""
-          content: {}
-    delete:
-      tags:
-      - users
-      summary: Delete a Part List and all it's Parts.
-      description: Delete a Part List and all it's Parts.
-      operationId: users_partlists_delete
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-    patch:
-      tags:
-      - users
-      summary: Update an existing Part List's details.
-      description: Update an existing Part List's details.
-      operationId: users_partlists_partial_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_parts:
-                  type: integer
-                  description: ""
-                  format: int32
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/partlists/{list_id}/parts/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Parts in a specific Part List.
-      description: |-
-        Get a list of all the Parts in a specific Part List.
-
-        Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup.
-        Optional parameter inc_color_details=0 can be used to prevent color field expansion and reduce response sizes.
-      operationId: users_partlists_parts_list
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add one or more Parts to the Part List.
-      description: |-
-        Add one or more Parts to the Part List.
-
-        ### Single Part
-        When adding a single Part, returns the successfully created Part (status 201) or details for why the Part could not
-        be added.
-        ### Multiple Parts
-        To add multiple Parts, POST a JSON list of them (using a Content-Type header of 'application/json').
-        e.g:
-        `[{"part_num":"3001", "color_id": 1, "quantity": 10},
-         {"part_num":"3001", "color_id": 2, "quantity": 20},
-         {"part_num":"3002", "color_id": 14, "quantity": 30}]`
-        Returns a list of successfully added Parts. If the Part already exists or is unrecognised, it will be skipped.
-      operationId: users_partlists_parts_create
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - color_id
-              - part_num
-              - quantity
-              type: object
-              properties:
-                part_num:
-                  type: string
-                  description: ""
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                color_id:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/partlists/{list_id}/parts/{part_num}/{color_id}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Part in the Part List.
-      description: Get details about a specific Part in the Part List.
-      operationId: users_partlists_parts_read
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: part_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: color_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    put:
-      tags:
-      - users
-      summary: Replace an existing Part's details in the Part List.
-      description: Replace an existing Part's details in the Part List.
-      operationId: users_partlists_parts_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: part_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: color_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - quantity
-              type: object
-              properties:
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "200":
-          description: ""
-          content: {}
-    delete:
-      tags:
-      - users
-      summary: Delete a Part from the Part List.
-      description: Delete a Part from the Part List.
-      operationId: users_partlists_parts_delete
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: part_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: color_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/parts/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Parts in all the user's Part Lists.
-      description: |-
-        Get a list of all the Parts in all the user's Part Lists.
-
-        Optional parameter inc_part_details=1 can be used to return additional part fields, the same as for a single part lookup.
-
-        ###Set List logic
-        Parts appearing in multiple Part Lists will be listed multiple times.
-
-        Optionally, filter by one or more of the below query parameters.
-      operationId: users_parts_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: part_num
-        in: query
-        schema:
-          type: string
-      - name: part_cat_id
-        in: query
-        schema:
-          type: number
-      - name: color_id
-        in: query
-        schema:
-          type: number
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/profile/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific user.
-      description: Get details about a specific user.
-      operationId: users_profile_read
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/setlists/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the user's Set Lists.
-      description: Get a list of all the user's Set Lists.
-      operationId: users_setlists_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add a new Set List.
-      description: Add a new Set List.
-      operationId: users_setlists_create
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - name
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_sets:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/setlists/{list_id}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Set List.
-      description: Get details about a specific Set List.
-      operationId: users_setlists_read
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    put:
-      tags:
-      - users
-      summary: Replace an existing Set List's details.
-      description: Replace an existing Set List's details.
-      operationId: users_setlists_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - name
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_sets:
-                  type: integer
-                  description: ""
-                  format: int32
-        required: true
-      responses:
-        "200":
-          description: ""
-          content: {}
-    delete:
-      tags:
-      - users
-      summary: Delete a Set List and all it's Sets.
-      description: Delete a Set List and all it's Sets.
-      operationId: users_setlists_delete
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-    patch:
-      tags:
-      - users
-      summary: Update an existing Set List's details.
-      description: Update an existing Set List's details.
-      operationId: users_setlists_partial_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                is_buildable:
-                  type: boolean
-                  description: ""
-                name:
-                  type: string
-                  description: ""
-                num_sets:
-                  type: integer
-                  description: ""
-                  format: int32
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/setlists/{list_id}/sets/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Sets in a specific Set List.
-      description: Get a list of all the Sets in a specific Set List.
-      operationId: users_setlists_sets_list
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add one or more Sets to the Set List. Existing Sets are unaffected.
-      description: |-
-        Add one or more Sets to the Set List. Existing Sets are unaffected.
-
-        ### Single Set
-        When adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not
-        be added.
-        ### Multiple Sets
-        To add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').
-        e.g:
-        `[{"set_num":"8043-1", "quantity": 1},
-         {"set_num":"8110-1", "quantity": 2, "include_spares": "False"}]`
-        Returns a list of successfully added Sets. If the Set already exists or is unrecognised, it will be skipped.
-      operationId: users_setlists_sets_create
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - set_num
-              type: object
-              properties:
-                set_num:
-                  type: string
-                  description: ""
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                include_spares:
-                  type: boolean
-                  description: ""
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/setlists/{list_id}/sets/{set_num}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Set in the Set List.
-      description: Get details about a specific Set in the Set List.
-      operationId: users_setlists_sets_read
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    put:
-      tags:
-      - users
-      summary: Replace an existing Set's details in the Set List.
-      description: Replace an existing Set's details in the Set List.
-      operationId: users_setlists_sets_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                include_spares:
-                  type: boolean
-                  description: ""
-      responses:
-        "200":
-          description: ""
-          content: {}
-    delete:
-      tags:
-      - users
-      summary: Delete a Set from the Set List.
-      description: Delete a Set from the Set List.
-      operationId: users_setlists_sets_delete
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-    patch:
-      tags:
-      - users
-      summary: Update an existing Set's details in the Set List.
-      description: Update an existing Set's details in the Set List.
-      operationId: users_setlists_sets_partial_update
-      parameters:
-      - name: list_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                include_spares:
-                  type: boolean
-                  description: ""
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/sets/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the Sets in the user's LEGO collection.
-      description: |-
-        Get a list of all the Sets in the user's LEGO collection.
-
-        ### Set List logic
-        Sets appearing in multiple Set Lists will be listed multiple times.
-
-        Optionally, filter by one or more of the below query parameters.
-      operationId: users_sets_list
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: set_num
-        in: query
-        schema:
-          type: string
-      - name: theme_id
-        in: query
-        schema:
-          type: number
-      - name: min_year
-        in: query
-        schema:
-          type: number
-      - name: max_year
-        in: query
-        schema:
-          type: number
-      - name: min_parts
-        in: query
-        schema:
-          type: number
-      - name: max_parts
-        in: query
-        schema:
-          type: number
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    post:
-      tags:
-      - users
-      summary: Add one or more Sets to the user's LEGO collection. Existing Sets are
-        unaffected.
-      description: |-
-        Add one or more Sets to the user's LEGO collection. Existing Sets are unaffected.
-
-        ### Set List logic
-        The Set List used when adding sets is chosen in the following order:
-        1. If no Set Lists exist, one will be created and used
-        2. User's configured default Set List for Imports
-        3. The first Set List alphabetically
-
-        ### Single Set
-        When adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not
-        be added.
-        ### Multiple Sets
-        To add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').
-        e.g:
-        `[{"set_num":"8043-1", "quantity": 1},
-         {"set_num":"8110-1", "quantity": 2, "include_spares": "False"}]`
-        Returns a list of successfully added Sets. If the Set already exists or is unrecognised, it will be skipped.
-      operationId: users_sets_create
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - set_num
-              type: object
-              properties:
-                set_num:
-                  type: string
-                  description: ""
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                include_spares:
-                  type: boolean
-                  description: ""
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/sets/{set_num}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Set in the user's LEGO collection.
-      description: |-
-        Get details about a specific Set in the user's LEGO collection.
-
-        ### Set List logic
-        Because this merges sets found across all Set Lists the fields list_id and include_spares may not be
-        accurate unless the Set actually only exists in a single Set List.
-      operationId: users_sets_read
-      parameters:
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: query
-        schema:
-          type: string
-      - name: theme_id
-        in: query
-        schema:
-          type: number
-      - name: min_year
-        in: query
-        schema:
-          type: number
-      - name: max_year
-        in: query
-        schema:
-          type: number
-      - name: min_parts
-        in: query
-        schema:
-          type: number
-      - name: max_parts
-        in: query
-        schema:
-          type: number
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-    put:
-      tags:
-      - users
-      summary: Update an existing Set's quantity in all Set Lists. This PUT call is
-        different to others in that it will create
-      description: |-
-        Update an existing Set's quantity in all Set Lists. This PUT call is different to others in that it will create
-        the Set if it doesn't already exist, and it will delete the Set if you pass a quantity of 0.
-
-        ### Set List logic
-        * Default Set List = user's configured default import list or the first alphabetically if none exist.
-        * Increasing quantity = add to Set in default Set List if it exists, else add it there
-        * Decreasing quantity = remove from Set in default Set List first, then from remaining lists until done
-      operationId: users_sets_update
-      parameters:
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: query
-        schema:
-          type: string
-      - name: theme_id
-        in: query
-        schema:
-          type: number
-      - name: min_year
-        in: query
-        schema:
-          type: number
-      - name: max_year
-        in: query
-        schema:
-          type: number
-      - name: min_parts
-        in: query
-        schema:
-          type: number
-      - name: max_parts
-        in: query
-        schema:
-          type: number
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-      responses:
-        "200":
-          description: ""
-          content: {}
-    delete:
-      tags:
-      - users
-      summary: Delete the Set from all the user's Set Lists.
-      description: Delete the Set from all the user's Set Lists.
-      operationId: users_sets_delete
-      parameters:
-      - name: set_num
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: set_num
-        in: query
-        schema:
-          type: string
-      - name: theme_id
-        in: query
-        schema:
-          type: number
-      - name: min_year
-        in: query
-        schema:
-          type: number
-      - name: max_year
-        in: query
-        schema:
-          type: number
-      - name: min_parts
-        in: query
-        schema:
-          type: number
-      - name: max_parts
-        in: query
-        schema:
-          type: number
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: search
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      responses:
-        "204":
-          description: ""
-          content: {}
-  /api/v3/users/{user_token}/sets/sync/:
-    post:
-      tags:
-      - users
-      summary: Synchronise a user's Sets to the POSTed list.
-      description: |-
-        Synchronise a user's Sets to the POSTed list.
-
-        ### Set List logic
-        This is used to completely replace the user's Sets with those in the supplied list.
-        It will remove any Sets in Rebrickable that are not found in the supplied list.
-        It will attempt to keep any current Rebrickable Sets in their existing Set Lists, and will add any new Sets
-        found into the Default Set List for Imports in the user's settings.
-        ### Single Set
-        When adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not
-        be added.
-        ### Multiple Sets
-        To add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').
-        e.g:
-        `[{"set_num":"8043-1", "quantity": 1},
-         {"set_num":"8110-1", "quantity": 2, "include_spares": "False"}]`
-        Returns a list of successfully added Sets. If the Set is unrecognised, it will be skipped.
-      operationId: users_sets_sync_create
-      parameters:
-      - name: user_token
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              required:
-              - set_num
-              type: object
-              properties:
-                quantity:
-                  type: integer
-                  description: ""
-                  format: int32
-                include_spares:
-                  type: boolean
-                  description: ""
-                set_num:
-                  type: string
-                  description: ""
-        required: true
-      responses:
-        "201":
-          description: ""
-          content: {}
-  /api/v3/users/badges/:
-    get:
-      tags:
-      - users
-      summary: Get a list of all the available Badges
-      description: Get a list of all the available Badges
-      operationId: users_badges_list
-      parameters:
-      - name: page
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
-  /api/v3/users/badges/{id}/:
-    get:
-      tags:
-      - users
-      summary: Get details about a specific Badge
-      description: Get details about a specific Badge
-      operationId: users_badges_read
-      parameters:
-      - name: id
-        in: path
-        description: A unique integer value identifying this badge.
-        required: true
-        schema:
-          type: integer
-      - name: ordering
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: ""
-          content: {}
 components:
   securitySchemes:
     ApiKeyAuth:
