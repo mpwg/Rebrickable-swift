@@ -3,8 +3,9 @@
 [![Dependabot Updates](https://github.com/mpwg/Rebrickable-swift/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/mpwg/Rebrickable-swift/actions/workflows/dependabot/dependabot-updates)
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Swift 6.1.2](https://img.shields.io/badge/Swift-6.1-orange.svg)](https://swift.org)
-[![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20macOS-lightgrey.svg)](https://developer.apple.com)
+[![Swift 6.1](https://img.shields.io/badge/Swift-6.1-orange.svg?logo=swift&logoColor=f5f5f5)](https://swift.org)
+[![iOS](https://img.shields.io/badge/iOS-17+-lightgrey.svg?logo=apple)](https://developer.apple.com)
+[![macOS](https://img.shields.io/badge/macOS-14+-lightgrey.svg?logo=apple)](https://developer.apple.com)
 
 # Swift6 API client for RebrickableLegoAPIClient
 
